@@ -1,0 +1,21 @@
+env:  
+  global:
+    - secure: "LtE84OAY54m+fbt7Hm+CNCmTXNKZuBkiWQHsyjZTVCxiFGF7eJvB8ghQNoJmi6bPOuA+doRZCA4SF1j2PQpnvU0vzAYkyrRGeKi5cyCDSfCY7nsX3w+xuId/cAGodOVSKvkEc47l+UPTmgSY3dYMvcwe4tFh6ET2xbDYXgD1Gz4H6MJd6QxMbznmiG73M3YdrCeoYvj1Ms8dhaLdjD5UydonMpGmW7XEJbDnoM6Jrn/CPT7o3w3gt0DCjPRJMwJkJ9yRQzJn8N/RahtWBZzEs7V9PNqMzJ9Ubbu8jFbX+YDjzoCq9mBRX8+l3O6GDBPTnVzm3sprotvk40XXKb8yqtwqIC1noq7Zoa7ivjswDRWM9drYZOb7PzTRZ59nR57vdzaogh3uYDPf8hoLoOuqX/i4JHUyf/dqHK+uu73PyVEOEvY9Q49h6diMxvpHOt3SXITqMes8qLsTZom88WStJXHjG/AC7nAyB+Xhw6gdfajHkyHQwW69Swh9IEENhXvEfqRWwLZraJ2WZ7YMKVdl6ohiYNASg+mMzvS40p8TLfKeSDyoWzR7zGLXb4+3LqXlbq1y8ZSSfskLPVtU/KxLiIPMCkihTSaWHWN73PRwgoJfhDzpkXpd+MxH6lg21tkp3PTPZ7yFu2jgCeqBkGQihheb4TX90uuUnYuucGIiFAM="
+    - GIT_DEPLOY_DIR=public
+    - GIT_DEPLOY_BRANCH=gh-pages
+    - GIT_DEPLOY_USERNAME="dimitraz"
+    - GIT_DEPLOY_EMAIL=dimitrazuccarelli@gmail.com
+
+branches:
+  only:
+    - master
+
+install:  
+  - rm -rf public || exit 0
+
+script:  
+  - binaries/hugo
+
+after_success:  
+  - cp .travis.yml public
+  - bash deploy.sh
