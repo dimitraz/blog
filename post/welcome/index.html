@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Dimitra">
+<meta name="description" content="Life the universe and everything">
+<meta name="generator" content="Hugo 0.22.1" />
+<title>First post</title>
+<link rel="shortcut icon" href="http://dimitraz.github.io/blog/images/favicon.ico">
+<link rel="stylesheet" href="http://dimitraz.github.io/blog/css/style.css">
+<link rel="stylesheet" href="http://dimitraz.github.io/blog/css/highlight.css">
+
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+
+
+<link href="http://dimitraz.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="dimitraz.github.io" />
+
+
+<meta property="og:title" content="First post" />
+<meta property="og:description" content="Apache Kafka Simple Kafka Consumer and Producer for testing purposes. Make sure to modify bootstrap.servers in the consumer.props and producer.props with the location of your server(s) if they are different.
+Getting started with Docker Linux Getting started with Linux is a fairly straightforward process:
+$ docker run -d --name zookeeper --network kafka-net zookeeper:3.4 $ docker run -d --name kafka --network kafka-net -p 9092:9092 --env ZOOKEEPER_IP=zookeeper ches/kafka  Connect to the Kafka broker by updating your bootstrap." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://dimitraz.github.io/blog/post/welcome/" />
+
+
+
+<meta property="article:published_time" content="2017-06-10T14:16:04&#43;01:00"/>
+<meta property="article:modified_time" content="2017-06-10T14:16:04&#43;01:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="First post">
+<meta itemprop="description" content="Apache Kafka Simple Kafka Consumer and Producer for testing purposes. Make sure to modify bootstrap.servers in the consumer.props and producer.props with the location of your server(s) if they are different.
+Getting started with Docker Linux Getting started with Linux is a fairly straightforward process:
+$ docker run -d --name zookeeper --network kafka-net zookeeper:3.4 $ docker run -d --name kafka --network kafka-net -p 9092:9092 --env ZOOKEEPER_IP=zookeeper ches/kafka  Connect to the Kafka broker by updating your bootstrap.">
+
+
+<meta itemprop="dateModified" content="2017-06-10T14:16:04&#43;01:00" />
+<meta itemprop="wordCount" content="319">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="First post"/>
+<meta name="twitter:title" content="First post"/>
+<meta name="twitter:description" content="Apache Kafka Simple Kafka Consumer and Producer for testing purposes. Make sure to modify bootstrap.servers in the consumer.props and producer.props with the location of your server(s) if they are different.
+Getting started with Docker Linux Getting started with Linux is a fairly straightforward process:
+$ docker run -d --name zookeeper --network kafka-net zookeeper:3.4 $ docker run -d --name kafka --network kafka-net -p 9092:9092 --env ZOOKEEPER_IP=zookeeper ches/kafka  Connect to the Kafka broker by updating your bootstrap."/>
+
+
+
+    </head>
+<body>
+    <nav class="main-nav">
+	
+		<a href='http://dimitraz.github.io/blog/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+
+	
+		<a class="cta" href="http://dimitraz.github.io/blog/index.xml">Subscribe</a>
+	
+</nav>
+
+    <section id="wrapper">
+        
+        
+<article class="post">
+    <header>
+        <h1>First post</h1>
+        <h2 class="headline">
+        2017-06-10
+        <br>
+        
+        </h2>
+    </header>
+    <section id="post-body">
+        
+
+<h1 id="apache-kafka">Apache Kafka</h1>
+
+<p>Simple Kafka Consumer and Producer for testing purposes.
+Make sure to modify <code>bootstrap.servers</code> in the <code>consumer.props</code> and <code>producer.props</code> with the location of your server(s) if they are different.</p>
+
+<h2 id="getting-started-with-docker">Getting started with Docker</h2>
+
+<h3 id="linux">Linux</h3>
+
+<p>Getting started with Linux is a fairly straightforward process:</p>
+
+<pre><code>$ docker run -d --name zookeeper --network kafka-net zookeeper:3.4
+$ docker run -d --name kafka --network kafka-net -p 9092:9092 --env ZOOKEEPER_IP=zookeeper ches/kafka
+</code></pre>
+
+<p>Connect to the Kafka broker by updating your <code>bootstrap.servers</code> with <code>localhost:9092</code> or the IP of the Kafka container.</p>
+
+<h3 id="mac">Mac</h3>
+
+<p>Establishing a connection between a container and a host service with Docker for Mac is slightly more convoluted. To get going, first run both the Zookeeper and Kafka containers normally:</p>
+
+<pre><code>$ docker run -d --name zookeeper --network kafka-net zookeeper:3.4
+$ docker run -d --name kafka --network kafka-net -p 9092:9092 --env ZOOKEEPER_IP=zookeeper ches/kafka
+</code></pre>
+
+<p>Get the container&rsquo;s IP address:</p>
+
+<pre><code>$ CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' kafka)
+$ echo $CONTAINER_IP 
+</code></pre>
+
+<p>Add this IP to the <code>loopback 0</code> interface:</p>
+
+<pre><code>$ sudo ifconfig lo0 alias $CONTAINER_IP
+</code></pre>
+
+<p>And finally connect to the broker using this address by updating the <code>bootstrap.servers</code> in the the <code>consumer.props</code> and <code>producer.props</code>.</p>
+
+<hr />
+
+<p><strong>Note</strong>: If you prefer to use your host&rsquo;s IP address, run the following:</p>
+
+<pre><code>$ HOST_IP=$(ifconfig en0 | grep &quot;inet &quot; | cut -d &quot; &quot; -f2)
+$ docker run -d --name zookeeper --network kafka-net zookeeper:3.4
+$ docker run -d --name kafka --network kafka-net -p 9092:9092 --env ZOOKEEPER_IP=$HOST_IP --env KAFKA_ADVERTISED_HOST_NAME=$HOST_IP ches/kafka
+</code></pre>
+
+<p>Connect to the Kafka broker using your host IP by updating the <code>bootstrap.servers</code> accordingly.</p>
+
+<h2 id="running-the-producer">Running the Producer</h2>
+
+<p>The Java application should create the topic <code>taytochips</code>, or whatever topics you choose to replace that with. To confirm:</p>
+
+<pre><code>$ docker run --rm --network kafka-net ches/kafka kafka-topics.sh --list --zookeeper zookeeper:2181
+</code></pre>
+
+<p>Start a consumer from within the container to verify if the messages from the producer are coming through:</p>
+
+<pre><code>$ docker run --rm --network kafka-net ches/kafka kafka-console-consumer.sh --topic taytochips --from-beginning --bootstrap-server kafka:9092
+</code></pre>
+
+<h2 id="to-do">To Do</h2>
+
+<ul>
+<li>Getting started with Openshift</li>
+</ul>
+
+    </section>
+</article>
+
+
+
+<ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+
+    
+    
+    
+</ul>
+
+
+
+        <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.github.com/dimitraz">
+        <i class="fa fa-github"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2017 Dimitra
+    
+    </p>
+</footer>
+
+    </section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://dimitraz.github.io/blog/js/main.js"></script>
+<script src="http://dimitraz.github.io/blog/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+</body>
+</html>
