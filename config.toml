@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "http://dimitraz.github.io/blog/"
+baseurl = "https://dimitraz.github.io/blog/"
 languageCode = "en-us"
 title = "dimitraz.github.io"
 theme = "hugo-cactus-theme"
