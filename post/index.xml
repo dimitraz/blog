@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on dimitraz.github.io</title>
-    <link>http://dimitraz.github.io/blog/post/</link>
+    <link>https://dimitraz.github.io/blog/post/</link>
     <description>Recent content in Posts on dimitraz.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 10 Jun 2017 14:16:04 +0100</lastBuildDate>
     
-	<atom:link href="http://dimitraz.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dimitraz.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>First post</title>
-      <link>http://dimitraz.github.io/blog/post/welcome/</link>
+      <link>https://dimitraz.github.io/blog/post/welcome/</link>
       <pubDate>Sat, 10 Jun 2017 14:16:04 +0100</pubDate>
       
-      <guid>http://dimitraz.github.io/blog/post/welcome/</guid>
+      <guid>https://dimitraz.github.io/blog/post/welcome/</guid>
       <description>Apache Kafka Simple Kafka Consumer and Producer for testing purposes. Make sure to modify bootstrap.servers in the consumer.props and producer.props with the location of your server(s) if they are different.
 Getting started with Docker Linux Getting started with Linux is a fairly straightforward process:
 $ docker run -d --name zookeeper --network kafka-net zookeeper:3.4 $ docker run -d --name kafka --network kafka-net -p 9092:9092 --env ZOOKEEPER_IP=zookeeper ches/kafka  Connect to the Kafka broker by updating your bootstrap.</description>
