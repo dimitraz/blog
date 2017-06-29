@@ -22,6 +22,17 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'Lab Mono';
+	src: url( '../fonts/labmono-regular-web.eot' );
+	src: url( '../fonts/labmono-regular-web.eot?#iefix' ) format( 'embedded-opentype' ),
+	url( '../fonts/labmono-regular-web.woff2' ) format( 'woff2' ),
+	url( '../fonts/labmono-regular-web.woff' ) format( 'woff' ),
+	url( '../fonts/labmono-regular-web.ttf' ) format( 'truetype' );
+	font-weight: normal;
+	font-style: normal;
+}
+
 [class^="icon-"]:before, [class*=" icon-"]:before {
 	font-family: "icons";
 	font-style: normal;
@@ -57,7 +68,7 @@ html, body { height: 100%; }
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
 body {
-	font:16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font:16px/1 "Lab Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #666;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
@@ -65,13 +76,13 @@ body {
 
 h1 {
 	font-size: 30px;
-	letter-spacing: -1px;
 	color: #222;
 	font-weight: bold;
 }
 
 h2 {
-	font: italic 19px/1.3em Georgia,serif;
+	font-family: Favorit;
+	font-size: 25px;
 	color: #bbb;
 }
 
@@ -203,30 +214,28 @@ em, i { font-style: italic; }
 h1 {
 	/* margin-bottom: 20px; */
 	color: #222;
-	font: 600 32px/1.4em Helvetica Neue", Helvetica,Arial,sans-serif;
+	/* font: 600 32px/1.4em Helvetica Neue", Helvetica,Arial,sans-serif; */
+	font-size: 28px;
+	font-family: Favorit;
+	font-weight: normal;
 }
 
 h2 {
 		margin-bottom: 10px;
-	  font: 600 24px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;
+	  /* font: 600 24px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif; */
+	font-size: 24px;
 	  color: #111;
 }
 
 
 .post h2.headline {
 	/*font: italic 22px/1.3em Georgia,serif;*/
-	font: 700 14px/1.5em "Inconsolata", "Helvetica Neue",Helvetica,Arial,sans-serif;
+	/* font: 700 14px/1.5em "Inconsolata", "Helvetica Neue",Helvetica,Arial,sans-serif; */
+	font-size: 13px;
 	margin: 5px 0 40px 0;
-
+	font-family: "Lab Mono";
 	  /*margin-top: 15px;*/
 	  display: inline-block;
-}
-
-#post-list h2 {
-	font: normal 17px/1.5em "Helvetica Neue", Helvetica,Arial, sans-serif;
-	color: #aaa;
-	max-width: 400px;
-	margin-top: 2px;
 }
 
 h3, h4, h5 { color:#333; }
@@ -355,23 +364,16 @@ Post List
 	padding-bottom: 20px;
 	list-style-type: none;
 	margin-bottom: 0;
+
 }
 
 #post-list li:last-child {
 	border-bottom: 1px solid #eee;
 }
 
-#post-list a {
-	color: #333;
-	display: block;
-	font: bold 19px/1.7 "Helvetica Neue",helvetica,Arial,sans-serif;
-}
-
 #post-list .dates {
-	float: right;
-	position: relative;
-	top: 1px;
-	font: 400 15px/1.8 Inconsolata, "Helvetica Neue",helvetica,Arial,sans-serif;
+	/* font: 400 15px/1.8 Inconsolata, "Helvetica Neue",helvetica,Arial,sans-serif; */
+	font-size: 13px;
 	color: #444;
 }
 
@@ -633,3 +635,4 @@ code {
 	padding: 4px; 
 	font-weight: 600;
 }
+
