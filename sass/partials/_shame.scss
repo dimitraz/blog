@@ -1,0 +1,87 @@
+/* CUSTOM ADDITIONS */
+
+#social {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+a.symbol {
+  color: #cdd4da;
+  font-size: 2rem;
+  text-decoration: none;
+  margin-right: 0.3rem;
+}
+
+a.symbol:hover {
+  color: #BCD4DA;
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+}
+.icon-facebook:before { content: '\e802'; }
+.icon-facebook-squared:before { content: '\e800'; }
+.icon-twitter:before { content: '\e801'; }
+.icon-twitter-1:before { content: '\e804'; }
+.icon-facebook-circled:before { content: '\e805'; }
+.icon-twitter-circled:before { content: '\e806'; }
+.icon-facebook-rect:before { content: '\e803'; }
+
+
+nav.main-nav {
+  padding: 20px 20px 0;
+
+  /*max-width: 600px;*/
+  /*width:100%;*/
+  background: #fff;
+  background: rgba(255,255,255,.90);
+  margin: 0 auto;
+  text-align: right;
+  /*position: fixed;*/
+  z-index: 100;
+}
+
+nav.main-nav a {
+  top: 8px;
+  right: 6px;
+  padding: 8px 12px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: Inconsolata;
+  line-height: 1.35;
+  border-radius: 3px;
+
+}
+nav.main-nav a.cta {
+  margin-left: 12px;
+}
+
+
+/* Media Queries
+@media screen and (max-width: 540px) {
+  #wrapper { padding:20px 20px 20px 20px;}
+  .post { margin: 40px 0; }
+
+  #post-list, #archive-list { margin-top: 0; }
+  #post-meta { margin-top: 60px; }
+
+  #title { font-size: 17px; }
+  #post-list .dates { display: none; }
+
+  #post-list-footer { margin-top: 20px; padding-top: 40px; }
+
+  h1 { font-size: 26px; }
+  .post h2.headline { font-size: 13px; }
+  .post h1 { font-size:24px; }
+  .post h2 { font-size:20px; }
+}
+*/

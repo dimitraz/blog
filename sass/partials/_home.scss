@@ -1,0 +1,91 @@
+// -----------------------------------------------------------------------------
+// Home page
+// -----------------------------------------------------------------------------
+
+.header {
+  padding-bottom: 40px;
+  width: 250px;
+
+}
+.profile h1 {
+  margin-bottom: 50px;
+}
+
+#title {
+  display: inline-block;
+  line-height: 100%;
+  font-weight: 500;
+  font-size: 19px;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.description {
+  float: right;
+  font: italic 14px/1.4em Georgia,serif;
+  color: #aaa;
+}
+
+.post header {
+  text-align:center;
+
+}
+
+// -----------------------------------------------------------------------------
+// Post List
+// -----------------------------------------------------------------------------
+
+#archive-list {
+  margin-top: 100px;
+}
+
+#post-list {
+  margin-bottom: 0;
+}
+
+#post-list li,#archive-list li {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-bottom: 0;
+
+}
+
+#post-list h2 {
+  margin: 0;
+}
+
+#post-list li:last-child {
+}
+
+#post-list .dates {
+  font-size: 13px;
+}
+
+#post-list-footer {
+  border-top: 1px solid #eee;
+  margin-top: 20px;
+  padding-top: 100px;
+}
+
+#archive-link {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 3px 10px 6px;
+  box-shadow: 0 0 0 1px hsla(207,83%,80%,1);
+}
+
+#archive-link:hover {
+  background: #5694f1;
+  color: #fff;
+  box-shadow: 0 0 0 1px #5694f1;
+}
+
+#archive-link span {
+  position: relative;
+  top: 0;
+  font-size: 17px;
+}

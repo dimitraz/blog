@@ -1,0 +1,151 @@
+// -----------------------------------------------------------------------------
+// Base styles, global styles
+// -----------------------------------------------------------------------------
+
+html {
+  box-sizing: border-box;
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font: 16px/1.7em $body-stack;
+  color: $body-colour;
+  background: #e6e6e6;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+ul 	{
+  margin: 0;
+  padding: 0;
+}
+
+li	{
+  list-style-type: circle;
+  list-style-position: inside;
+}
+
+blockquote {
+  padding-left: 15px;
+  border-left: 3px solid #eee;
+}
+
+code {
+  font-family: 400 13px/2.5em $code-stack; /* 600 */
+  background: #eee;
+  padding: 5px;
+}
+
+span.code {
+  font-family: 400 13px $code-stack;
+  background: #eee;
+}
+
+pre	{
+  font-family: 400 13px/2.5em $code-stack;
+  color: #d0d4d7;
+  background: #272b2d; /* fdfdfd */
+  padding:20px;
+  border-radius: 3px;
+  white-space:pre-wrap;
+  overflow: auto;
+}
+
+hr {
+  display: block;
+  border: none;
+  height: 1px;
+  margin: 40px auto;
+  background: #eee;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 13px;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px;
+}
+
+.footer {
+  text-align: center;
+  padding-top: 70px;
+}
+
+.symbol {
+  font-size: 2rem;
+  color: $link-active;
+}
+
+.symbol:hover {
+  color: #bcd4da;
+}
+
+// -----------------------------------------------------------------------------
+// Typography
+// -----------------------------------------------------------------------------
+
+h1 {
+  font: 400 35px $title-stack;
+}
+
+h2 {
+  font: 400 30px $title-stack;
+}
+
+a {
+  color: $link-colour;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: $link-active;
+  border-bottom: 2px solid $link-active;
+}
+
+// -----------------------------------------------------------------------------
+// Spacing
+// -----------------------------------------------------------------------------
+
+h1, h2 {
+  margin-bottom: 15px;
+}
+
+p, h3, h4, h5, pre, ul {
+  margin-bottom: 20px;
+}
+
+p + h1, p + h2, pre + h1, pre + h2 {
+  margin-top: 40px;
+}
+
+// -----------------------------------------------------------------------------
+// Helpers
+// -----------------------------------------------------------------------------
+
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.hidden {
+  display: none;
+}
+
