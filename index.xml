@@ -12,14 +12,14 @@
     
     
     <item>
-      <title>First post</title>
+      <title>The evaluation phase</title>
       <link>https://dimitraz.github.io/blog/post/welcome/</link>
       <pubDate>Sat, 10 Jun 2017 14:16:04 +0100</pubDate>
       
       <guid>https://dimitraz.github.io/blog/post/welcome/</guid>
-      <description>Apache Kafka Simple Kafka Consumer and Producer for testing purposes. Make sure to modify bootstrap.servers in the consumer.props and producer.props with the location of your server(s) if they are different.
-Getting started with Docker Linux Getting started with Linux is a fairly straightforward process:
-$ docker run -d --name zookeeper --network kafka-net zookeeper:3.4 $ docker run -d --name kafka --network kafka-net -p 9092:9092 --env ZOOKEEPER_IP=zookeeper ches/kafka  Connect to the Kafka broker by updating your bootstrap.</description>
+      <description>It&amp;rsquo;s been four weeks since Google Summer of Code officially started, four weeks in which I&amp;rsquo;ve worked alongside fellow gsocer Polina to integrate the first Kafka producers and consumers in the UnifiedPush Server code base. It has been a pretty good feeling and something I never really imagined I&amp;rsquo;d have the opportunity to work on, but I really couldn&amp;rsquo;t have asked for a better project.
+So far, we&amp;rsquo;ve
+ Set up the main working environment using Docker containers for Zookeeper and the Kafka Broker - not without a few headaches, but more on this soon.</description>
     </item>
     
   </channel>
