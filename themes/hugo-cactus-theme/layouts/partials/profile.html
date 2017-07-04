@@ -1,6 +1,11 @@
 <div class="profile">
-    <header  class="header">
-        <h1 style="margin-left: -100px">{{ .Site.Params.description }}</h1>
-        <!-- img height="76px" src="http://blogs.plos.org/neurotribes/files/2011/11/HappyMac.jpg" -->
-    </header>
+    <section id="wrapper">
+        <header id="header">
+            <a href="{{ "about" | absURL }}">
+                <img id="avatar" class="2x" src="{{ "images/avatar.gif" | absURL }}"/>
+            </a>
+            <h1>{{ .Site.Params.name }}</h1>
+            <h2>{{ .Site.Params.bio | markdownify }}</h2>
+        </header>
+    </section>
 </div>

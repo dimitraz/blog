@@ -1,68 +1,19 @@
 +++
 date = "2017-06-10T14:16:04+01:00"
-title = "First post"
+title = "The evaluation phase"
 
 +++
 
-# Apache Kafka 
-Simple Kafka Consumer and Producer for testing purposes.
-Make sure to modify `bootstrap.servers` in the `consumer.props` and `producer.props` with the location of your server(s) if they are different. 
+It's been four weeks since Google Summer of Code officially started, four weeks in which I've worked alongside fellow gsocer [Polina](http://polinankoleva.github.io) to integrate the first Kafka producers and consumers in the UnifiedPush Server code base. It has been a pretty good feeling and something I never really imagined I'd have the opportunity to work on, but I really couldn't have asked for a better project.
 
-## Getting started with Docker
-### Linux
-Getting started with Linux is a fairly straightforward process:
+So far, we've
 
-```
-$ docker run -d --name zookeeper --network kafka-net zookeeper:3.4
-$ docker run -d --name kafka --network kafka-net -p 9092:9092 --env ZOOKEEPER_IP=zookeeper ches/kafka
-```
-Connect to the Kafka broker by updating your `bootstrap.servers` with `localhost:9092` or the IP of the Kafka container.
+- Set up the main working environment using Docker containers for Zookeeper and the Kafka Broker - not without a few headaches, but more on this soon.
 
-### Mac
-Establishing a connection between a container and a host service with Docker for Mac is slightly more convoluted. To get going, first run both the Zookeeper and Kafka containers normally:
+- Integrated the first Kafka Producer! The producer simply sends a message to a topic called `installationMetrics` every time a push notification was used to launch an application. 
 
-```
-$ docker run -d --name zookeeper --network kafka-net zookeeper:3.4
-$ docker run -d --name kafka --network kafka-net -p 9092:9092 --env ZOOKEEPER_IP=zookeeper ches/kafka
-```
+- Integrated the first Kafka Consumer! The consumer is initialized on startup and consumes unread messages from the same topic as the producer, updating the analytics for that application accordingly. 
 
-Get the container's IP address:
-
-```
-$ CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' kafka)
-$ echo $CONTAINER_IP 
-```
-Add this IP to the `loopback 0` interface: 
-```
-$ sudo ifconfig lo0 alias $CONTAINER_IP
-```
-
-And finally connect to the broker using this address by updating the `bootstrap.servers` in the the `consumer.props` and `producer.props`.
-
-______ 
-
-**Note**: If you prefer to use your host's IP address, run the following:
-
-```
-$ HOST_IP=$(ifconfig en0 | grep "inet " | cut -d " " -f2)
-$ docker run -d --name zookeeper --network kafka-net zookeeper:3.4
-$ docker run -d --name kafka --network kafka-net -p 9092:9092 --env ZOOKEEPER_IP=$HOST_IP --env KAFKA_ADVERTISED_HOST_NAME=$HOST_IP ches/kafka
-```
-Connect to the Kafka broker using your host IP by updating the `bootstrap.servers` accordingly.
-
-## Running the Producer
-
-The Java application should create the topic `taytochips`, or whatever topics you choose to replace that with. To confirm:
-
-```
-$ docker run --rm --network kafka-net ches/kafka kafka-topics.sh --list --zookeeper zookeeper:2181
-```
-
-Start a consumer from within the container to verify if the messages from the producer are coming through:
-
-```
-$ docker run --rm --network kafka-net ches/kafka kafka-console-consumer.sh --topic taytochips --from-beginning --bootstrap-server kafka:9092
-```
-
-## To Do
-- Getting started with Openshift
+- Looked at leveraging the Contexts and Dependency Injection (CDI) model for future (and current) producers & consumers. We've decided to go for [Kafka-CDI](https://github.com/matzew/kafka-cdi), a CDI extension built by Matthias for Kafka which provides the basic functionality for this, and which we may build on in the future.
+ 
+In the upcoming weeks we'll be looking at Kafka Security, Kafka on Openshift and Kafka Streams, hopefully with more regular updates of what I learn in the process! 

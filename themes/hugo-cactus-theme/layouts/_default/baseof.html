@@ -5,7 +5,7 @@
     </head>
 <body>
     {{ partial "nav.html" . }}
-    <section class="wrapper">
+    <section id="wrapper">
         {{ block "profile" . }}{{ end }}
         {{ block "main" . -}}{{- end }}
 
@@ -14,4 +14,3 @@
     {{ partial "js.html" . }}
 </body>
 </html>
-

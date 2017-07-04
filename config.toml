@@ -5,10 +5,10 @@ title = "dimitraz.github.io"
 theme = "hugo-cactus-theme"
 
 # Disable comments by leaving disqusShortname empty
-disqusShortname = ""
+disqusShortname = "dimitraz"
 
 [params]
-	name = "Dimitra"
+	name = "A student studying Applied Computing"
 	description = "Life the universe and everything"
 	bio = ""
 	enableRSS = true
