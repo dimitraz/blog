@@ -4,8 +4,8 @@ languageCode = "en-us"
 title = "dimitraz.github.io"
 theme = "hugo-cactus-theme"
 
-# Disable comments by leaving disqusShortname empty
 disqusShortname = "dimitraz"
+googleAnalytics = "UA-102682982-1"
 
 [params]
 	name = "A student studying Applied Computing"
