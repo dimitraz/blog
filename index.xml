@@ -6,10 +6,20 @@
     <description>Recent content on dimitraz.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Jun 2017 14:16:04 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 19 Jul 2017 13:16:04 +0100</lastBuildDate>
     
 	<atom:link href="https://dimitraz.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker for Mac networking</title>
+      <link>https://dimitraz.github.io/blog/post/docker-networking/</link>
+      <pubDate>Wed, 19 Jul 2017 13:16:04 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/docker-networking/</guid>
+      <description>When Google Summer of Code first began, one of our first tasks was describing the necessary steps for the required Kafka-Zookeeper setup. The most straightforward and uncomplicated solution was running the UPS locally, while Zookeeper and the Kafka broker would run in two separate Docker containers.
+From the very beginning I ran into loads of issues. Producers and consumers could be started easily from within the containers and communicate between themselves at that level.</description>
+    </item>
     
     <item>
       <title>The evaluation phase</title>
