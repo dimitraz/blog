@@ -48,7 +48,7 @@
 
 
 <meta itemprop="dateModified" content="2017-07-19T13:16:04&#43;01:00" />
-<meta itemprop="wordCount" content="758">
+<meta itemprop="wordCount" content="756">
 
 
 
@@ -95,22 +95,21 @@
     <section id="post-body">
         
 
-<p>When Google Summer of Code first began, one of our first tasks was describing the necessary steps for the required Kafka-Zookeeper setup.
+<p>When Google Summer of Code first began, one of our first tasks was describing the steps for the required Kafka-Zookeeper setup.
 The most straightforward and uncomplicated solution was running the UPS locally, while Zookeeper and the Kafka broker would run in two separate Docker containers.</p>
 
 <p>From the very beginning I ran into loads of issues. Producers and consumers could be started easily from within the containers and communicate between themselves at that level.</p>
 
-<p>As soon as I attempted to establish a connection between the local UPS instance and the Kafka broker, however, all communication seemed to come to a standstill.</p>
-
-<p>Although the application could connect to the broker on its published port and the topics were being created, the messages sent from the UPS were not being properly published and the consumer wasn’t reading anything back.</p>
+<p>As soon as I attempted to establish a connection between the local UPS instance and the Kafka broker, however, all communication seemed to come to a standstill.
+Although the application could connect to the broker on its published port and the topics were being created, the messages sent from the UPS were not being properly published and the consumer wasn’t reading anything back.</p>
 
 <p>It wasn&rsquo;t the first time I had experienced service-container communication issues and a huge hint was of course the fact that this seemed to work seamlessly on Linux.
 After many headaches, investigation, trial and error here are a few solutions I&rsquo;ve gathered and tested that could be of help to you too.</p>
 
 <h2 id="the-problem">The problem</h2>
 
-<p>Docker for Mac uses Kyperkit to run a xhyve VM for the Docker daemon.
-The VM uses VPNKit for exposing container ports to localhost, but the network settings are not configurable, meaning that containers cannot be accessed via their IPs and there is no network interface which bridges between the physical machine and the virtual machine.</p>
+<p>Docker for Mac uses Hyperkit to run a xhyve VM for the Docker daemon.
+The VM uses VPNKit for exposing container ports to localhost, but the network settings and adapters are not configurable, meaning that containers cannot be accessed via their IPs and there is no network interface which bridges between the physical machine and the virtual machine.</p>
 
 <p>In summary, this means it&rsquo;s pretty much impossible to directly reach a container via its internal address, while containers cannot access services on the host.</p>
 
@@ -120,7 +119,7 @@ The VM uses VPNKit for exposing container ports to localhost, but the network se
 <li><strong>Route to the host</strong></li>
 </ol>
 
-<p>Attempting to connect to the host&rsquo;s en0 interface address was the first breakthrough we had. Although this produces the expected results it&rsquo;s not an optimal solution, given the possibility of constantly changing IP addresses or of no connection at all.</p>
+<p>Attempting to connect to the host&rsquo;s en0 interface address was the first breakthrough we had. Although this produces the expected results it&rsquo;s not an optimal solution, given the possibility of constantly changing IP addresses, or of no connection at all.</p>
 
 <ol>
 <li><strong>Add the container IP to the lo0 interface</strong></li>
@@ -219,7 +218,7 @@ sudo ifconfig lo0 alias 192.100.200.2/24
 
 <h2 id="feedback">Feedback</h2>
 
-<p>The information is this post is a combination of information gathered from perusing the Docker forums, Github issues, Stack Overflow and Docker docs. A huge thanks goes to @almirkadric for taking the time to answer all my questions on the forum.
+<p>This post is a combination of information gathered from perusing the Docker forums, Github issues, Stack Overflow and Docker docs. A huge thanks goes to @almirkadric for taking the time to answer all my questions on the forum.
 If you have anything to add or correct, please let me know.</p>
 
     </section>
