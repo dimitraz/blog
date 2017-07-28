@@ -48,7 +48,7 @@
 
 
 <meta itemprop="dateModified" content="2017-07-25T13:16:04&#43;01:00" />
-<meta itemprop="wordCount" content="735">
+<meta itemprop="wordCount" content="1168">
 
 
 
@@ -103,7 +103,7 @@ Having a higher level overview of what is currently there and a vague idea of wh
 
 <h2 id="sonarqube">SonarQube</h2>
 
-<p>SonarQube is definitely the less complicated of the two in terms of getting going quickly and is intuitive enough that you can start diving in straight away with small changes.</p>
+<p>SonarQube is definitely the least complicated of the two in terms of getting going quickly and is intuitive enough that you can start diving in straight away with small changes.</p>
 
 <p>If you&rsquo;re having trouble installing it, <a href="https://polinankoleva.github.io/education/2017/07/13/install-sonar-qube.html">here&rsquo;s</a> a great guide to getting started.</p>
 
@@ -117,7 +117,7 @@ Having a higher level overview of what is currently there and a vague idea of wh
 
 <p>It goes without saying that the benefits of having a tool that not only tells you that you&rsquo;re doing something wrong, but gives you an <em>understanding</em> of <em>why</em> something you&rsquo;ve written is not considered best practice and <em>what</em> you can do to improve it, are unquantifiable.</p>
 
-<h2 id="taking-a-look-at-the-ups">Taking a look at the UPS</h2>
+<h3 id="taking-a-look-at-the-ups">Taking a look at the UPS</h3>
 
 <p>To analyse the UPS I configured the project properties (see <a href="https://github.com/aerogear/aerogear-unifiedpush-server/pull/865">here</a>) and simply ran <code>sonar-scanner</code>.
 I did bump my head a bit with JaCoCo and generating the code coverage report, which was overcome by firstly updating the version to the latest, and secondly enabling the <code>code-coverage</code> maven profile (the UPS already had JaCoCo installed, but not enabled by default):
@@ -137,11 +137,52 @@ I did bump my head a bit with JaCoCo and generating the code coverage report, wh
 <li><p>Code coverage is only at 33.7%, which leaves room for improvement, and is something myself &amp; Polina now know we should be aware of with whatever we implement in the future.</p></li>
 </ul>
 
+<h2 id="structure101">Structure101</h2>
+
+<p>I&rsquo;ll admit that Structure101 can be quite confusing to get to grips with. Jumping right in and investigating the different options and what they do is probably the best way to get started.</p>
+
+<p>There&rsquo;s a multitude of different features to expore in Structure101. A good one to take a look at is the <code>summary</code> tab. It breaks the project down and analyses the size, architecture and model of the project, the structural complexity, the tangles and fat percentage (which I&rsquo;ll get to later) at package, class and method levels, and where exactly these issues are occurring.</p>
+
+<h3 id="getting-started">Getting started</h3>
+
+<p>Once you&rsquo;ve installed Structure101, select your project type (I chose maven obviously) and experiment with selecting different options on the startup screen.<br />
+You&rsquo;ll be presented with a graph in the top left corner which represents structural complexity of the project. The y-axis measures the <code>tangled</code> percentage (i.e. cyclic dependencies), while the x-axis measures the <code>fat</code> percentage (i.e. the overall number of dependencies). The lower the tangle measure and the lower the fat percentage the more structured a project is likely to be.</p>
+
+<p><img src="/blog/static/img/graph.png" alt="Structure101 graph" /></p>
+
+<p>Underneath the graph you&rsquo;ll get a list of the main culprits causing tangles/fat in your project. Double clicking on one of these will take you to the exact location in your project structure which is displaying the problem.</p>
+
+<p>As an example, I&rsquo;ll look at a tangle in the UPS, under the <code>model/api</code> module, in the <code>api</code> package: double clicking on the tangle in the left panel takes me to the exact package, where I can see there are actually two tangles (but I&rsquo;ll focus on the second):</p>
+
+<p><img src="/blog/static/img/tangles.png" alt="Structure101 tangle" /></p>
+
+<p>Double clicking on the blue arrow gives me more details about the tangle. In this case, there&rsquo;s a cyclic dependency between the <code>VariantMetricInformation</code> class and the the <code>PushMessageInformation</code> class. Both classes are referencing each other:</p>
+
+<p><img src="/blog/static/img/tangle-info.png" alt="Structure101 tangle info" /></p>
+
+<h3 id="taking-a-look-at-the-ups-1">Taking a look at the UPS</h3>
+
+<p>Once again it&rsquo;s cool to see how well the UPS performs on a structural level:</p>
+
+<ul>
+<li><p>Excessive Structural Complexity (XS) is 1%</p></li>
+
+<li><p>There are only 4 tangles at the design level (i.e. high-level packages)</p></li>
+
+<li><p>No items exceed the fat threshold at the design, leaf-package or class level</p></li>
+
+<li><p>Only 1 item exceeds the fat threshold at the method level</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>While Structure101 and SonarQube are great tools for project analysis, they&rsquo;re not a silver bullet. I think their most important function is giving the user a good <em>starting point</em> to strategically and logically analyse their codebase, getting insight into the underlying flaws that may or may not exist at a structural or syntactical level. Accepting suggestions blindly probably won&rsquo;t lead to lasting solutions.</p>
+
 <h2 id="good-first-bug">Good first bug</h2>
 
 <p>There&rsquo;s an Aerogear <a href="https://issues.jboss.org/issues/?filter=12332262">jira label</a> called <code>good_first_bug</code> for anyone who&rsquo;s looking at getting started with Open Source contribution. Next to that, SonarQube is probably one of the best places to start in terms of small contributions that could make a huge improvement to the quality of the codebase.</p>
 
-<p>Other than that I can highly recommend getting a few of your projects set up with SonarQube, going through the bugs and vulnerabilities, seeing what mistakes you&rsquo;ve potentially made and then improving on them! It&rsquo;s a great way to solidify your knowledge and improve the quality of your projects.</p>
+<p>Other than that I can highly recommend getting a few of your old projects set up with SonarQube and Structure101, going through the bugs and vulnerabilities, seeing what mistakes you&rsquo;ve potentially made and then improving on them! It&rsquo;s a great way to solidify your knowledge and enhance the quality of your projects.</p>
 
     </section>
 </article>
