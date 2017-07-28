@@ -109,11 +109,11 @@ Having a higher level overview of what is currently there and a vague idea of wh
 
 <p>In a very short amount of time, with the project configured correctly, you&rsquo;re presented with a nice looking dashboard that gives you an overview of your project&rsquo;s bugs, vulnerabilities, technical debt, test coverage and more:</p>
 
-<p><img src="/blog/static/img/sonar-dash.png" alt="SonarQube project dashboard" /></p>
+<p><a href="/blog/static/img/sonar-dash.png"><img src="/blog/static/img/sonar-dash.png" alt="SonarQube project dashboard" /></a></p>
 
 <p>SonarQube has a variety of cool features to explore: the <code>issues</code> tab lists all of the main issues within the codebase (bugs, code smells and vulnerabilities), their level of importance, and even the estimated amount of time it would take to fix the issue. Clicking on each issue gives you an explanation of it and includes a nice example. Clicking on the class link shows you where each issue appears in that class and which lines are not covered by tests. The <code>rules</code> tab provides a huge list of rules &amp; best practices for a handful of different languages.</p>
 
-<p><img src="/blog/static/img/sonar-issues.png" alt="SonarQube issues" /></p>
+<p><a href="/blog/static/img/sonar-issues.png"><img src="/blog/static/img/sonar-issues.png" alt="SonarQube issues" /></a></p>
 
 <p>It goes without saying that the benefits of having a tool that not only tells you that you&rsquo;re doing something wrong, but gives you an <em>understanding</em> of <em>why</em> something you&rsquo;ve written is not considered best practice and <em>what</em> you can do to improve it, are unquantifiable. </p>
 
@@ -143,24 +143,26 @@ I did bump my head a bit with JaCoCo and generating the code coverage report, wh
 
 <p>I&rsquo;ll admit that Structure101 can be quite confusing to get to grips with. Jumping right in and investigating the different options and what they do is probably the best way to get started.</p>
 
-<p>There&rsquo;s a multitude of different features to expore in Structure101. A good one to take a look at is the <code>summary</code> tab. It breaks the project down and analyses the size, architecture and model of the project, the structural complexity, the tangles and fat percentage (which I&rsquo;ll get to later) at package, class and method levels, and where exactly these issues are occurring.</p>
+<p>There&rsquo;s a multitude of different features to explore in Structure101. A good one to take a look at is the <code>summary</code> tab. It breaks the project down and analyses the size, architecture and model of the project, the structural complexity, the tangles and fat percentage (which I&rsquo;ll get to later) at package, class and method levels, and where exactly these issues are occurring.</p>
 
 <h3 id="getting-started">Getting started</h3>
 
 <p>Once you&rsquo;ve installed Structure101, select your project type (I chose maven obviously) and experiment with selecting different options on the startup screen.<br />
 You&rsquo;ll be presented with a graph in the top left corner which represents structural complexity of the project. The y-axis measures the <code>tangled</code> percentage (i.e. cyclic dependencies), while the x-axis measures the <code>fat</code> percentage (i.e. the overall number of dependencies). The lower the tangle measure and the lower the fat percentage the more structured a project is likely to be.</p>
 
-<p><img src="/blog/static/img/graph.png" alt="Structure101 graph" /></p>
+<p style="text-align: center;">
+    <a href="/blog/static/img/graph.png"><img style="width: 60%; text-align: center; margin: 0 auto" src="/blog/static/img/graph.png"></a>
+</p>
 
 <p>Underneath the graph you&rsquo;ll get a list of the main culprits causing tangles/fat in your project. Double clicking on one of these will take you to the exact location in your project structure which is displaying the problem.</p>
 
 <p>As an example, I&rsquo;ll look at a tangle in the UPS, under the <code>model/api</code> module, in the <code>api</code> package: double clicking on the tangle in the left panel takes me to the exact package, where I can see there are actually two tangles (but I&rsquo;ll focus on the second):</p>
 
-<p><img src="/blog/static/img/tangles.png" alt="Structure101 tangle" /></p>
+<p><a href="/blog/static/img/tangles.png"><img src="/blog/static/img/tangles.png" alt="Structure101 tangle" /></a></p>
 
 <p>Double clicking on the blue arrow gives me more details about the tangle. In this case, there&rsquo;s a cyclic dependency between the <code>VariantMetricInformation</code> class and the the <code>PushMessageInformation</code> class. Both classes are referencing each other:</p>
 
-<p><img src="/blog/static/img/tangle-info.png" alt="Structure101 tangle info" /></p>
+<p><a href="/blog/static/img/tangle-info.png"><img src="/blog/static/img/tangle-info.png" alt="Structure101 tangle info" /></a></p>
 
 <h3 id="taking-a-look-at-the-ups-1">Taking a look at the UPS</h3>
 
