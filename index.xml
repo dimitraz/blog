@@ -6,10 +6,20 @@
     <description>Recent content on dimitraz.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Jul 2017 13:16:04 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jul 2017 14:16:04 +0100</lastBuildDate>
     
 	<atom:link href="https://dimitraz.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Evaluation phase II</title>
+      <link>https://dimitraz.github.io/blog/post/phase-ii/</link>
+      <pubDate>Fri, 28 Jul 2017 14:16:04 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/phase-ii/</guid>
+      <description>It&amp;rsquo;s week 9 of Google Summer of Code and we&amp;rsquo;ve officially reached the second evaluation phase, which means we only have about four weeks left until our project comes to an end.
+This last month has been heavily focused on research (a lot more so than I initally anticipated) and attempting to get more involved in the community, mostly since one of our mentors was away. We faced a few blockers and experienced our fair share of ups and downs but we&amp;rsquo;ve managed to make a fair bit of progress, with support from the community:</description>
+    </item>
     
     <item>
       <title>Analysing the UnifiedPush Server</title>
