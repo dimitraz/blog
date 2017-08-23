@@ -6,10 +6,20 @@
     <description>Recent content on dimitraz.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Jul 2017 14:16:04 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 23 Aug 2017 13:16:04 +0100</lastBuildDate>
     
 	<atom:link href="https://dimitraz.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The final phase</title>
+      <link>https://dimitraz.github.io/blog/post/week-xiii/</link>
+      <pubDate>Wed, 23 Aug 2017 13:16:04 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/week-xiii/</guid>
+      <description>Since the last Google Summer of Code post a few weeks ago in which I promised to post weekly, I&amp;rsquo;ve mainly worked on the kafka-cdi library, adding custom serializers/deserializers to automatically handle objects of any type T.
+Generic serializers and deserializers for Kafka I ran into every problem imaginable - null serializers, problems with the library and problems with abstract class serialization. Here is the list of what was done:</description>
+    </item>
     
     <item>
       <title>Evaluation phase II</title>
@@ -29,16 +39,6 @@ This last month has been heavily focused on research (a lot more so than I inita
       <guid>https://dimitraz.github.io/blog/post/ups-metrics/</guid>
       <description>Attempting to get familiarized with the UPS codebase and its under-the-hood intricacies is a pretty daunting task. A good step in the right direction, for me at least, was attempting to analyse the metrics and the overall quality of the codebase. Having a higher level overview of what is currently there and a vague idea of what can be improved upon is generally a good place to start.
 So with that objective in mind we were recommended two tools in particular to play around with, Structure101 and SonarQube.</description>
-    </item>
-    
-    <item>
-      <title>The final phase</title>
-      <link>https://dimitraz.github.io/blog/post/week-xiii/</link>
-      <pubDate>Tue, 25 Jul 2017 13:16:04 +0100</pubDate>
-      
-      <guid>https://dimitraz.github.io/blog/post/week-xiii/</guid>
-      <description>Since the last Google Summer of Code post a few weeks ago in which I promised to post weekly, I&amp;rsquo;ve mainly worked on the kafka-cdi library, adding custom serializers/deserializers to automatically handle objects of any type T.
-Generic serializers and deserializers for Kafka I ran into every problem imaginable - null serializers, problems with the library and problems with abstract class serialization. Here is the list of what was done:</description>
     </item>
     
     <item>
