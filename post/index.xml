@@ -32,6 +32,16 @@ So with that objective in mind we were recommended two tools in particular to pl
     </item>
     
     <item>
+      <title>The final phase</title>
+      <link>https://dimitraz.github.io/blog/post/week-xiii/</link>
+      <pubDate>Tue, 25 Jul 2017 13:16:04 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/week-xiii/</guid>
+      <description>Since the last Google Summer of Code post a few weeks ago in which I promised to post weekly, I&amp;rsquo;ve mainly worked on the kafka-cdi library, adding custom serializers/deserializers to automatically handle objects of any type T.
+Generic serializers and deserializers for Kafka I ran into every problem imaginable - null serializers, problems with the library and problems with abstract class serialization. Here is the list of what was done:</description>
+    </item>
+    
+    <item>
       <title>Docker for Mac networking</title>
       <link>https://dimitraz.github.io/blog/post/docker-networking/</link>
       <pubDate>Wed, 19 Jul 2017 13:16:04 +0100</pubDate>
