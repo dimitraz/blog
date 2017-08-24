@@ -23,7 +23,7 @@ Here is the list of what was done:
  
 * Matthias [refactored](https://github.com/matzew/kafka-cdi/pull/16) the library's `DelegationKafkaConsumer` to support custom Consumers, which were previously only consuming records of type `String, String` [#16](https://github.com/matzew/kafka-cdi/pull/16)
 
-The PRs for this can be found here: [#16](https://github.com/matzew/kafka-cdi/pull/16), [#17](https://github.com/matzew/kafka-cdi/pull/17), [#23](https://github.com/matzew/kafka-cdi/pull/23), [#889](https://github.com/aerogear/aerogear-unifiedpush-server/pull/889), plus an [example](https://github.com/dimitraz/kafka-poc/commit/b797667b5d4c3d72704de10dbadcf18349e67a6d) of a generic gson ser/des.
+All PRs for this can be found here: [#16](https://github.com/matzew/kafka-cdi/pull/16), [#17](https://github.com/matzew/kafka-cdi/pull/17), [#23](https://github.com/matzew/kafka-cdi/pull/23), [#889](https://github.com/aerogear/aerogear-unifiedpush-server/pull/889), plus an [example](https://github.com/dimitraz/kafka-poc/commit/b797667b5d4c3d72704de10dbadcf18349e67a6d) of a generic gson ser/des.
 
 And the mailing list threads: [#1](http://lists.jboss.org/pipermail/aerogear-dev/2017-August/012934.html), [#2](http://lists.jboss.org/pipermail/aerogear-dev/2017-August/012951.html)
 
@@ -53,5 +53,6 @@ We still have to test everything against all variant types, which we're going to
 
 ### Metrics processing
 Our plan for the next and last week of GSoC is to focus on logging responses and stats (for example, delivery successes and failures) to various topics for processing and analysis with Kafka streams at a later stage. 
+Polina has already come up with a few jiras (see our [`gsoc_2017`](https://issues.jboss.org/issues/?jql=labels+%3D+gsoc_2017) label) and we've sent [an email](http://lists.jboss.org/pipermail/aerogear-dev/2017-August/012974.html) to the mailing list asking for ideas from the community as well. 
 
-After that, we'll be publishing our final reports including what's left to do, and we'll probably be doing a "wrap-up webinar", going through our thoughts on the last three months of work and giving giving a small demo on the final result.
+After that, we'll be publishing our final reports including what's left to do, and we'll probably be doing a "wrap-up webinar", going through our thoughts on the last three months of work and giving a small demo on the final result.
