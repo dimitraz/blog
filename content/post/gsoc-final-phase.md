@@ -1,11 +1,9 @@
 +++
-title = "Google Summer of Code 2017"
-description = "Final results"
+title = "GSoC 2017 with RedHat"
+description = "Google Summer of Code 2017 final results"
 date = "2017-08-27T14:16:04+01:00"
 draft = "true"
 +++
-
-For the last three months I've worked on the [Aerogear UnifiedPush Server](https://github.com/aerogear/aerogear-unifiedpush-server) developing a proof of concept for utilizing Kafka producers, consumers and streams for push message routing and metrics analysis.
 
 ## Useful links
 * [`GSoc 2017 Branch`](https://github.com/aerogear/aerogear-unifiedpush-server/tree/GSOC_2017_kafka) and [commits](https://github.com/aerogear/aerogear-unifiedpush-server/commits/GSOC_2017_kafka)
@@ -13,10 +11,10 @@ For the last three months I've worked on the [Aerogear UnifiedPush Server](https
 * [`GSoC 2017 Jira board`](https://issues.jboss.org/browse/AGPUSH-2187?jql=labels%20%3D%20gsoc_2017)
 
 ## Overall Stats
-* 87 total Jira Tasks created
-* 36 pull requests to the UPS
+* 88 total Jira Tasks created
+* 37 pull requests to the UPS
 * 7 pull requests to Kafka CDI 
-* The GSoC branch is 58 commits ahead of the master
+* The GSoC branch is 60 commits ahead of the master
 
 ## What was done
 With the help of our mentors, we managed to replace the Java Messaging System with a completely Kafka based workflow for push message routing: 
