@@ -48,7 +48,7 @@
 
 
 <meta itemprop="dateModified" content="2017-08-27T14:16:04&#43;01:00" />
-<meta itemprop="wordCount" content="842">
+<meta itemprop="wordCount" content="865">
 
 
 
@@ -109,7 +109,7 @@
 
 <ul>
 <li>88 total Jira Tasks created</li>
-<li>37 pull requests to the UPS</li>
+<li>38 pull requests to the UPS</li>
 <li>7 pull requests to Kafka CDI</li>
 <li>The GSoC branch is 60 commits ahead of the master</li>
 </ul>
@@ -123,7 +123,7 @@
 
 <li><p>The <a href="https://github.com/aerogear/aerogear-unifiedpush-server/pull/900"><code>Notification Router</code> streams class</a> is initialized on application startup and begins its work when a message is sent to the above-mentioned topic. After some processing, it streams the push messages out (in the form of a <code>MessageHolderWithVariants</code> object) to 6 different output topics based on the message&rsquo;s variant type (Android, iOS, etc).</p></li>
 
-<li><p>The <a href="https://github.com/aerogear/aerogear-unifiedpush-server/pull/900/commits/0d5407e62ce8b15c1daabda29b56f2e2b85d6cf3"><code>Token Loader</code> consumer</a> listens for messages on the 6 streams output topics and after <a href="https://github.com/aerogear/aerogear-unifiedpush-server/blob/5b268fcb80bd66a26b39147777061ff229ed39f9/push/sender/src/main/java/org/jboss/aerogear/unifiedpush/message/token/TokenLoader.java">further complicated processing</a>, loads batches of tokens for devices that match requested database parameters.</p></li>
+<li><p>The <a href="https://github.com/aerogear/aerogear-unifiedpush-server/blob/GSOC_2017_kafka/push/sender/src/main/java/org/jboss/aerogear/unifiedpush/message/kafka/MessageHolderWithVariantsKafkaConsumer.java"><code>MessageHolderWithVariantsKafkaConsumer</code></a> listens for messages on the 6 streams output topics and passes them to the <a href="https://github.com/aerogear/aerogear-unifiedpush-server/pull/900/commits/0d5407e62ce8b15c1daabda29b56f2e2b85d6cf3"><code>Token Loader</code></a>. With some <a href="https://github.com/aerogear/aerogear-unifiedpush-server/blob/5b268fcb80bd66a26b39147777061ff229ed39f9/push/sender/src/main/java/org/jboss/aerogear/unifiedpush/message/token/TokenLoader.java">further complicated processing</a>, the Token Loader loads batches of tokens from the database for devices that match requested database parameters.</p></li>
 
 <li><p>The messages with tokens are dispatched and received by the <a href="https://github.com/aerogear/aerogear-unifiedpush-server/blob/5b268fcb80bd66a26b39147777061ff229ed39f9/push/sender/src/main/java/org/jboss/aerogear/unifiedpush/message/kafka/MessageHolderWithTokensKafkaProducer.java"><code>MessageHolderWithTokens</code> producer</a> which produces each message to its respective topic (again, based on variant type).</p></li>
 
@@ -132,7 +132,7 @@ We decided to stick with CDI events over regular Producers and Consumers to offe
 </ol>
 
 <p>We&rsquo;ve also looked at Kafka for collecting and processing push related metrics. So far, we have topics for invalid tokens (which will be used for removing them from the database), push message failures and successes, and iOS-specific token failures and successes.
-We&rsquo;re currently working on a demo application that will read from these topics and perform processing on the data using Kafka Streams.</p>
+We&rsquo;re currently working on a <a href="https://github.com/dimitraz/mp-ups-demo">demo application</a> that will read from these topics and perform processing on the data using Kafka Streams.</p>
 
 <p>This work can all be broken down into the PRs, blog posts, and mailing list threads below (along with PRs by <a href="https://github.com/aerogear/aerogear-unifiedpush-server/pulls?q=is%3Apr+author%3Apolinankoleva">Polina</a> and <a href="https://github.com/aerogear/aerogear-unifiedpush-server/pulls?q=is%3Apr+author%3Amatzew">Matthias</a>, not listed):</p>
 
@@ -168,6 +168,8 @@ We&rsquo;re currently working on a demo application that will read from these to
 <li><p>Use Kafka Streams for push message processing (<a href="https://github.com/aerogear/aerogear-unifiedpush-server/pull/900">#900</a>)</p></li>
 
 <li><p>Add a producer for APNS specific token metrics (<a href="https://github.com/aerogear/aerogear-unifiedpush-server/pull/908">#908</a>)</p></li>
+
+<li><p>Cleanup and bug fix for <code>MessageHolderWithVariants</code> events (<a href="https://github.com/aerogear/aerogear-unifiedpush-server/pull/917">#917</a>)</p></li>
 </ul>
 
 <h3 id="research-other">Research &amp; Other</h3>
@@ -184,6 +186,7 @@ We&rsquo;re currently working on a demo application that will read from these to
 <li><a href="https://issues.jboss.org/browse/AGPUSH-2157">AGPUSH-2157</a> Kafka performance metrics</li>
 <li>Small tweaks to the UPS mock data loader (<a href="https://github.com/aerogear/ups-mock-data-loader/pull/5">#5</a>)</li>
 <li>Small tweaks to the Java-ADM library  (<a href="https://github.com/aerogear/java-adm/pull/5">#5</a>)</li>
+<li>Stream processing <a href="https://github.com/dimitraz/mp-ups-demo">demo application</a></li>
 </ul>
 
 <p>And finally, all mailing list updates: <a href="http://lists.jboss.org/pipermail/aerogear-dev/2017-June/012887.html">1</a>, <a href="http://lists.jboss.org/pipermail/aerogear-dev/2017-June/012869.html">2</a>, <a href="http://lists.jboss.org/pipermail/aerogear-dev/2017-July/012894.html">3</a>, <a href="http://lists.jboss.org/pipermail/aerogear-dev/2017-July/012899.html">4</a>, <a href="http://lists.jboss.org/pipermail/aerogear-dev/2017-July/012904.html">5</a>, <a href="http://lists.jboss.org/pipermail/aerogear-dev/2017-July/012914.html">6</a>, <a href="http://lists.jboss.org/pipermail/aerogear-dev/2017-August/012934.html">7</a>, <a href="http://lists.jboss.org/pipermail/aerogear-dev/2017-August/012949.html">8</a>, <a href="http://lists.jboss.org/pipermail/aerogear-dev/2017-August/012955.html">9</a>, <a href="http://lists.jboss.org/pipermail/aerogear-dev/2017-August/012974.html">10</a>, <a href="http://lists.jboss.org/pipermail/aerogear-dev/2017-August/012976.html">11</a> (UPS roadmap)</p>
