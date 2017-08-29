@@ -2,8 +2,9 @@
 title = "GSoC 2017 with RedHat"
 description = "Google Summer of Code 2017 final results"
 date = "2017-08-27T14:16:04+01:00"
-draft = "true"
 +++
+
+For the last three months I've worked on the UnifiedPush Server alongside fellow gsocer Polina to come up with a proof of concept for using Apache Kafka as the UPS' internal messaging system. Here is a quick a summary of what we did, what can still be improved on and what still has to be done.
 
 ## Useful links
 * [`GSoc 2017 Branch`](https://github.com/aerogear/aerogear-unifiedpush-server/tree/GSOC_2017_kafka) and [commits](https://github.com/aerogear/aerogear-unifiedpush-server/commits/GSOC_2017_kafka)
@@ -90,3 +91,5 @@ All blog posts: [1](https://dimitraz.github.io/blog/post/welcome/), [2](https://
 
 * All other remaining tickets in our backlog can be found under the `gsoc_2017` label, [here](https://issues.jboss.org/browse/AGPUSH-2187?jql=labels%20%3D%20gsoc_2017)
 
+
+A huge thanks to my mentors, @mziccard @matzew and @lgriffin for the amount of time, energy and patience they dedicated to us and the project, and thanks to @polinankoleva for being an all round great team-mate!
