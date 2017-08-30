@@ -1,13 +1,15 @@
 +++
-title = "Evaluation phase II"
-description = "Google Summer of Code second evaluation phase"
+title = "GSoC: The second evaluation phase"
+description = "An overview of the second phase of Google Summer of Code"
 date = "2017-07-28T14:16:04+01:00"
 +++
 
-It's week 9 of Google Summer of Code and we've officially reached the second evaluation phase, which means we only have about four weeks left until our project comes to an end.
+It's week 9 of Google Summer of Code and we've officially reached the second evaluation phase, which means we only have about four weeks left until our project comes to an end!
 
-This last month has been heavily focused on research (a lot more so than I initally anticipated) and attempting to get more involved in the community, mostly since one of our mentors was away.
-We faced a few blockers and experienced our fair share of ups and downs but we've managed to make a fair bit of progress, with support from the community:
+So far so good! The amount I've learnt so far and the amount I still have to learn is definitely exciting, and I'm very grateful to be able to work on this project. This last month has been heavily focused on research, a lot more so than I initally anticipated. We've also been attempting to get more involved in the community, especially since one of our mentors was away. 
+
+We faced a few blockers and experienced our fair share of ups and downs but we've still managed to make a fair bit of progress, with support from the community. 
+All of the work so far has been leading up to the huge last month of work that awaits us. 
 
 * We created a new Kafka module in the UPS for Kafka related configs and tests ([#870](https://github.com/aerogear/aerogear-unifiedpush-server/pull/870)) 
 

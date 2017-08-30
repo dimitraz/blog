@@ -1,6 +1,6 @@
 +++
-title = "The final phase"
-description = "Google Summer of Code, week 13"
+title = "GSoC: The final phase"
+description = "Week 13 of Google Summer of Code"
 date = "2017-08-23T13:16:04+01:00"
 +++
 
@@ -55,4 +55,4 @@ We still have to test everything against all variant types, which we're going to
 Our plan for the next and last week of GSoC is to focus on logging responses and stats (for example, delivery successes and failures) to various topics for processing and analysis with Kafka streams at a later stage. 
 Polina has already come up with a few jiras (see our [`gsoc_2017`](https://issues.jboss.org/issues/?jql=labels+%3D+gsoc_2017) label) and we've sent [an email](http://lists.jboss.org/pipermail/aerogear-dev/2017-August/012974.html) to the mailing list asking for ideas from the community as well. 
 
-After that, we'll be publishing our final reports including what's left to do, and we'll probably be doing a "wrap-up webinar", going through our thoughts on the last three months of work and giving a small demo on the final result.
+After that, we'll be publishing our final reports including what's left to do, and we'll probably be doing a "wrap-up webinar", going through our thoughts on the last three months of work and giving a small demo on the final result. Stay tuned!
