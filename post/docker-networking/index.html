@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="A student studying Applied Computing">
+<meta name="description" content="Life the universe and everything">
+<meta name="generator" content="Hugo 0.22.1" />
+<title>Docker for Mac networking</title>
+<link rel="shortcut icon" href="https://dimitraz.github.io/blog/images/favicon.ico">
+<link rel="stylesheet" href="https://dimitraz.github.io/blog/css/style.css">
+<link rel="stylesheet" href="https://dimitraz.github.io/blog/css/highlight.css">
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+
+
+<link href="https://dimitraz.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="dimitraz.github.io" />
+
+
+<meta property="og:title" content="Docker for Mac networking" />
+<meta property="og:description" content="Accessing services from containers with Docker for Mac" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dimitraz.github.io/blog/post/docker-networking/" />
+
+
+
+<meta property="article:published_time" content="2017-07-19T13:16:04&#43;01:00"/>
+<meta property="article:modified_time" content="2017-07-19T13:16:04&#43;01:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Docker for Mac networking">
+<meta itemprop="description" content="Accessing services from containers with Docker for Mac">
+
+
+<meta itemprop="dateModified" content="2017-07-19T13:16:04&#43;01:00" />
+<meta itemprop="wordCount" content="756">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Docker for Mac networking"/>
+<meta name="twitter:title" content="Docker for Mac networking"/>
+<meta name="twitter:description" content="Accessing services from containers with Docker for Mac"/>
+
+
+
+    </head>
+<body>
+    <nav class="main-nav">
+	
+		<a href='https://dimitraz.github.io/blog/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+
+	
+		<a class="cta" href="https://dimitraz.github.io/blog/index.xml">Subscribe</a>
+	
+</nav>
+
+    <section id="wrapper">
+        
+        
+<article class="post">
+    <header>
+        <h1>Docker for Mac networking</h1>
+        <h2 class="headline">
+        July 19, 2017
+        <br>
+        
+        </h2>
+    </header>
+    <section id="post-body">
+        
+
+<p>When Google Summer of Code first began, one of our first tasks was describing the steps for the required Kafka-Zookeeper setup.
+The most straightforward and uncomplicated solution was running the UPS locally, while Zookeeper and the Kafka broker would run in two separate Docker containers.</p>
+
+<p>From the very beginning I ran into loads of issues. Producers and consumers could be started easily from within the containers and communicate between themselves at that level.</p>
+
+<p>As soon as I attempted to establish a connection between the local UPS instance and the Kafka broker, however, all communication seemed to come to a standstill.
+Although the application could connect to the broker on its published port and the topics were being created, the messages sent from the UPS were not being properly published and the consumer wasn’t reading anything back.</p>
+
+<p>It wasn&rsquo;t the first time I had experienced service-container communication issues and a huge hint was of course the fact that this seemed to work seamlessly on Linux.
+After many headaches, investigation, trial and error here are a few solutions I&rsquo;ve gathered and tested that could be of help to you too.</p>
+
+<h2 id="the-problem">The problem</h2>
+
+<p>Docker for Mac uses Hyperkit to run a xhyve VM for the Docker daemon.
+The VM uses VPNKit for exposing container ports to localhost, but the network settings and adapters are not configurable, meaning that containers cannot be accessed via their IPs and there is no network interface which bridges between the physical machine and the virtual machine.</p>
+
+<p>In summary, this means it&rsquo;s pretty much impossible to directly reach a container via its internal address, while containers cannot access services on the host.</p>
+
+<h2 id="connecting-from-a-container-to-the-host">Connecting from a container to the host</h2>
+
+<ol>
+<li><strong>Route to the host</strong></li>
+</ol>
+
+<p>Attempting to connect to the host&rsquo;s en0 interface address was the first breakthrough we had. Although this produces the expected results it&rsquo;s not an optimal solution, given the possibility of constantly changing IP addresses, or of no connection at all.</p>
+
+<ol>
+<li><strong>Add the container IP to the lo0 interface</strong></li>
+</ol>
+
+<p>The most reliable solution I&rsquo;ve come across so far is to alias to the loopback 0 interface:</p>
+
+<pre><code>sudo ifconfig lo0 alias $CONTAINER_IP
+</code></pre>
+
+<p>It&rsquo;s a quick and easy option and works well for most use cases I&rsquo;ve come across. You can use any unused IP address for this, but using the container IP is a personal preference of mine for easily keeping tabs.</p>
+
+<ol>
+<li><strong>Use the <code>192.168.65.1</code> address</strong></li>
+</ol>
+
+<p>The host can be accessed from the container using the address <code>192.168.65.1</code>.
+As far as I know this is the address of the VM&rsquo;s eth0 interface, but it isn&rsquo;t very well documented (or documented at all, in that case).</p>
+
+<ol>
+<li><strong>Use the <code>docker.for.mac.localhost</code> DNS name</strong></li>
+</ol>
+
+<p>The most recent solution outlined in the docs recommends the following, from version <code>17.06</code> onwards:</p>
+
+<blockquote>
+<p>Connect to the special Mac-only DNS name <code>docker.for.mac.localhost</code> which will resolve to the internal IP address used by the host.</p>
+</blockquote>
+
+<h3 id="alternative-solutions">Alternative solutions</h3>
+
+<p>There are a few interesting hacks that I&rsquo;ve yet to try, but that are worth taking a look at:</p>
+
+<ol>
+<li><a href="https://github.com/mal/docker-for-mac-host-bridge"><strong>Docker for Mac host bridge by @mal</strong></a></li>
+</ol>
+
+<p>Uses <code>tuntap</code> to add a <code>tap</code> interface to the Docker VM for routing traffic back and forth between the containers and the host machine.</p>
+
+<ol>
+<li><a href="https://github.com/wojas/docker-mac-network"><strong>OpenVPN by @wojas</strong></a></li>
+</ol>
+
+<p>Uses <code>OpenVPN</code> to access internal Docker networks from the host machine.</p>
+
+<h2 id="connecting-from-the-host-to-a-container">Connecting from the host to a container</h2>
+
+<p>There are two options here. Simply publishing the ports is the easiest route to go, but if you can&rsquo;t mess around with ports and are facing port conflicts, do the following:</p>
+
+<ol>
+<li><p>Start the container</p>
+
+<pre><code>docker run -d -p 80:80 nginx
+</code></pre></li>
+
+<li><p>Add the alias to the loopback0 interface:</p>
+
+<pre><code>sudo ifconfig lo0 alias  172.17.0.4
+</code></pre></li>
+
+<li><p><code>sudo vi /etc/hosts</code> and add a line for your service, for example: <code>172.17.0.4 nginx.local</code></p></li>
+</ol>
+
+<p>You should be able to access it now at <code>nginx.local</code>.</p>
+
+<p><strong>Note</strong>: If you have multiple applications, just bind to a specific address and follow the same steps for all applications:</p>
+
+<pre><code>docker run -p 192.100.200.1:80:80 nginx
+docker run -p 192.100.200.2:80:80 drupal
+..,
+</code></pre>
+
+<pre><code>sudo ifconfig lo0 alias 192.100.200.1/24
+sudo ifconfig lo0 alias 192.100.200.2/24
+...
+</code></pre>
+
+<pre><code>192.100.200.1 nginx.local
+192.100.200.2 drupal.local
+...
+</code></pre>
+
+<h2 id="further-reading">Further reading</h2>
+
+<ul>
+<li><p>Github Issues: <a href="https://github.com/docker/for-mac/issues/1031">docker/for-mac#1031</a>, <a href="https://github.com/docker/for-mac/issues/155">docker/for-mac#155</a>, <a href="https://github.com/docker/for-mac/issues/68">docker/for-mac#68</a>, <a href="https://github.com/docker/for-mac/issues/57">docker/for-mac#57</a>, <a href="https://github.com/moby/hyperkit/issues/45">moby/hyperkit#45</a>, <a href="https://github.com/moby/moby/issues/22753">moby/moby#22753</a>, <a href="https://github.com/moby/moby/issues/22429">moby/moby#22429</a></p></li>
+
+<li><p>Docker forums: <a href="https://forums.docker.com/t/support-tap-interface-for-direct-container-access-incl-multi-host/17835">#17835</a>, <a href="https://forums.docker.com/t/ip-routing-to-container/8424">#8424</a>, <a href="https://forums.docker.com/t/network-bridge-on-host/12414">#12414</a>, <a href="https://forums.docker.com/t/connect-directly-to-container/18828">#18828</a></p></li>
+
+<li><p><a href="https://docs.docker.com/docker-for-mac/networking/">Docker for Mac docs</a></p></li>
+
+<li><p><a href="https://github.com/mal/docker-for-mac-host-bridge">Docker for Mac Host bridge</a></p></li>
+
+<li><p><a href="https://github.com/wojas/docker-mac-network">Access internal Docker networks using OpenVPN</a></p></li>
+</ul>
+
+<h2 id="feedback">Feedback</h2>
+
+<p>This post is a combination of information gathered from perusing the Docker forums, Github issues, Stack Overflow and Docker docs. A huge thanks goes to @almirkadric for taking the time to answer all my questions on the forum.
+If you have anything to add or correct, please let me know.</p>
+
+    </section>
+</article>
+
+<footer id="post-meta" class="clearfix">
+    
+    <img class="avatar" src="https://dimitraz.github.io/blog/images/avatar.png">
+    <div>
+        <span class="dark">A student studying Applied Computing</span>
+        <span></span>
+    </div>
+    
+    <section id="sharing">
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fdimitraz.github.io%2fblog%2fpost%2fdocker-networking%2f - Docker%20for%20Mac%20networking "><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+    </section>
+</footer>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dimitraz';
+    var disqus_identifier = 'https:\/\/dimitraz.github.io\/blog\/post\/docker-networking\/';
+    var disqus_title = 'Docker for Mac networking';
+    var disqus_url = 'https:\/\/dimitraz.github.io\/blog\/post\/docker-networking\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+
+    
+    
+    
+        <li>
+            <a href="/blog/post/outreach/">Approaching outreach<aside class="dates">Apr 6 2018</aside></a>
+        </li>
+    
+        <li>
+            <a href="/blog/post/gsoc-final-phase/">GSoC 2017 with RedHat<aside class="dates">Aug 27 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/blog/post/week-xiii/">The final phase<aside class="dates">Aug 23 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/blog/post/phase-ii/">Evaluation phase II<aside class="dates">Jul 28 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/blog/post/ups-metrics/">Analysing the UnifiedPush Server<aside class="dates">Jul 25 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/blog/post/welcome/">The evaluation phase<aside class="dates">Jun 10 2017</aside></a>
+        </li>
+    
+</ul>
+
+
+
+        <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.github.com/dimitraz">
+        <i class="fa fa-github"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2018 A student studying Applied Computing
+    
+    </p>
+</footer>
+
+    </section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://dimitraz.github.io/blog/js/main.js"></script>
+<script src="https://dimitraz.github.io/blog/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-102682982-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>
