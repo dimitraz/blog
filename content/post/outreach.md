@@ -1,6 +1,6 @@
 +++
 date = "2018-04-06T12:18:01+01:00"
-description = ""
+description = "Learning from RedHat's outreach programmes"
 title = "Approaching outreach"
 
 +++
