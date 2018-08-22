@@ -1,6 +1,6 @@
 +++
 date = "2017-06-10T14:16:04+01:00"
-title = "GSoc: First evaluation phase"
+title = "GSoC: First evaluation phase"
 description = "The first four weeks of Google Summer of Code"
 +++
 
