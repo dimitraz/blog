@@ -6,10 +6,20 @@
     <description>Recent content in Posts on dimitraz.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Apr 2018 12:18:01 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 22 Aug 2018 10:48:33 +0100</lastBuildDate>
     
 	<atom:link href="https://dimitraz.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Eight months at Red Hat Mobile</title>
+      <link>https://dimitraz.github.io/blog/post/internship/</link>
+      <pubDate>Wed, 22 Aug 2018 10:48:33 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/internship/</guid>
+      <description>The first three months I started my internship at Red Hat Mobile eight months ago with very little idea of what I was getting myself into. I thought I had a vague idea of what to expect, but I definitely didn’t think I would be working as part of a team on a real product, or at least anything other than small bugs.
+I started with 3 other interns. We were all placed in a team that matched our skillsets and were assigned a buddy to help us ‘settle in’.</description>
+    </item>
     
     <item>
       <title>Approaching outreach</title>
@@ -22,17 +32,17 @@ I&amp;rsquo;ve volunteered in the past helping older audiences get to grips with
     </item>
     
     <item>
-      <title>GSoC 2017 with RedHat</title>
+      <title>Google Summer of Code 2017</title>
       <link>https://dimitraz.github.io/blog/post/gsoc-final-phase/</link>
       <pubDate>Sun, 27 Aug 2017 14:16:04 +0100</pubDate>
       
       <guid>https://dimitraz.github.io/blog/post/gsoc-final-phase/</guid>
-      <description>For the last three months I&amp;rsquo;ve worked on the UnifiedPush Server alongside fellow gsocer Polina to come up with a proof of concept for using Apache Kafka as the UPS&amp;rsquo; internal messaging system. Here is a quick a summary of what we did, what can still be improved on and what still has to be done.
-Useful links  GSoc 2017 Branch and commits All UPS PRs and Kafka CDI PRs by me GSoC 2017 Jira board  Overall Stats  88 total Jira Tasks created 38 pull requests to the UPS 7 pull requests to Kafka CDI The GSoC branch is 60 commits ahead of the master  What was done With the help of our mentors, we managed to replace the Java Messaging System with a completely Kafka based workflow for push message routing:</description>
+      <description>GSoC has come to an end and although I&amp;rsquo;m sad to be finishing up, I&amp;rsquo;m very proud of what we&amp;rsquo;ve managed to accomplish and grateful to have been a part of this project.
+For the last three months myself and fellow gsocer Polina have worked on the Unified Push Server to come up with a proof of concept for using Apache Kafka as its internal messaging system. Here is a quick an overview of what we did, what can still be improved on and what still has to be done.</description>
     </item>
     
     <item>
-      <title>The final phase</title>
+      <title>GSoC: The final phase</title>
       <link>https://dimitraz.github.io/blog/post/week-xiii/</link>
       <pubDate>Wed, 23 Aug 2017 13:16:04 +0100</pubDate>
       
@@ -42,13 +52,13 @@ Generic serializers and deserializers for Kafka I ran into every problem imagina
     </item>
     
     <item>
-      <title>Evaluation phase II</title>
+      <title>GSoC: The second evaluation phase</title>
       <link>https://dimitraz.github.io/blog/post/phase-ii/</link>
       <pubDate>Fri, 28 Jul 2017 14:16:04 +0100</pubDate>
       
       <guid>https://dimitraz.github.io/blog/post/phase-ii/</guid>
-      <description>It&amp;rsquo;s week 9 of Google Summer of Code and we&amp;rsquo;ve officially reached the second evaluation phase, which means we only have about four weeks left until our project comes to an end.
-This last month has been heavily focused on research (a lot more so than I initally anticipated) and attempting to get more involved in the community, mostly since one of our mentors was away. We faced a few blockers and experienced our fair share of ups and downs but we&amp;rsquo;ve managed to make a fair bit of progress, with support from the community:</description>
+      <description>It&amp;rsquo;s week 9 of Google Summer of Code and we&amp;rsquo;ve officially reached the second evaluation phase, which means we only have about four weeks left until our project comes to an end!
+So far so good! The amount I&amp;rsquo;ve learnt so far and the amount I still have to learn is definitely exciting, and I&amp;rsquo;m very grateful to be able to work on this project. This last month has been heavily focused on research, a lot more so than I initally anticipated.</description>
     </item>
     
     <item>
@@ -72,14 +82,12 @@ From the very beginning I ran into loads of issues. Producers and consumers coul
     </item>
     
     <item>
-      <title>The evaluation phase</title>
+      <title>GSoC: First evaluation phase</title>
       <link>https://dimitraz.github.io/blog/post/welcome/</link>
       <pubDate>Sat, 10 Jun 2017 14:16:04 +0100</pubDate>
       
       <guid>https://dimitraz.github.io/blog/post/welcome/</guid>
-      <description>It&amp;rsquo;s been four weeks since Google Summer of Code officially started, four weeks in which I&amp;rsquo;ve worked alongside fellow gsocer Polina to integrate the first Kafka producers and consumers in the UnifiedPush Server code base. It has been a pretty good feeling and something I never really imagined I&amp;rsquo;d have the opportunity to work on, but I really couldn&amp;rsquo;t have asked for a better project.
-So far, we&amp;rsquo;ve
- Set up the main working environment using Docker containers for Zookeeper and the Kafka Broker - not without a few headaches, but more on this soon.</description>
+      <description>It&amp;rsquo;s been four weeks since Google Summer of Code officially started. In these past four weeks I&amp;rsquo;ve worked alongside fellow gsocer Polina to integrate the first Kafka producers and consumers in the UnifiedPush Server code base. It has been a pretty good feeling and something I never really imagined I&amp;rsquo;d have the opportunity to work on, but I really couldn&amp;rsquo;t have asked for a better project to be involved in.</description>
     </item>
     
   </channel>
