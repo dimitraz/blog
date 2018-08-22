@@ -27,7 +27,7 @@ HUGO_ENV="production"
 ./binaries/hugo
 
 echo "Updating gh-pages branch"
-cd public && git add --all && git commit -m "publish: Outreach post"
+cd public && git add --all && git commit -m "publish: Internship post"
 
 echo "pushing to publish"
 git push origin gh-pages -f
