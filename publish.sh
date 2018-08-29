@@ -4,11 +4,11 @@
 
 #cd $DIR/..
 
-if [[ $(git status -s) ]]
-then
-    echo "The working directory is dirty. Please commit any pending changes."
-    exit 1;
-fi
+# if [[ $(git status -s) ]]
+# then
+#     echo "The working directory is dirty. Please commit any pending changes."
+#     exit 1;
+# fi
 
 echo "Deleting old publication"
 rm -rf public
@@ -24,10 +24,10 @@ rm -rf public/*
 
 echo "Generating site"
 HUGO_ENV="production" 
-./binaries/hugo
+hugo
 
 echo "Updating gh-pages branch"
-cd public && git add --all && git commit -m "publish: Internship post"
+cd public && git add --all && git commit -m "unpublish: Internship post"
 
 echo "pushing to publish"
 git push origin gh-pages -f

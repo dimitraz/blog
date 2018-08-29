@@ -2,7 +2,7 @@
 date = "2018-08-22T10:48:33+01:00"
 description = "A summary of my internship at Red Hat"
 title = "Eight months at Red Hat Mobile"
-
+draft = true
 +++
 
 
