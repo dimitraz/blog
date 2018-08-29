@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dimitraz.github.io</title>
+    <link>https://dimitraz.github.io/blog/</link>
+    <description>Recent content on dimitraz.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Apr 2018 12:18:01 +0100</lastBuildDate>
+    
+	<atom:link href="https://dimitraz.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Approaching outreach</title>
+      <link>https://dimitraz.github.io/blog/post/outreach/</link>
+      <pubDate>Fri, 06 Apr 2018 12:18:01 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/outreach/</guid>
+      <description>About a month ago I was asked to be a junior mentor along with my friend Judy to two high school girls doing a two-week-long internship at RedHat Mobile. My &amp;ldquo;buddy&amp;rdquo; Jameel got to work planning out every day they would be there meticulously and asked me to come up with some ideas for sessions I could do with them.
+I&amp;rsquo;ve volunteered in the past helping older audiences get to grips with modern technology but approaching a younger audience is something I&amp;rsquo;ve never really given a chance.</description>
+    </item>
+    
+    <item>
+      <title>Google Summer of Code 2017</title>
+      <link>https://dimitraz.github.io/blog/post/gsoc-final-phase/</link>
+      <pubDate>Sun, 27 Aug 2017 14:16:04 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/gsoc-final-phase/</guid>
+      <description>GSoC has come to an end and although I&amp;rsquo;m sad to be finishing up, I&amp;rsquo;m very proud of what we&amp;rsquo;ve managed to accomplish and grateful to have been a part of this project.
+For the last three months myself and fellow gsocer Polina have worked on the Unified Push Server to come up with a proof of concept for using Apache Kafka as its internal messaging system. Here is a quick an overview of what we did, what can still be improved on and what still has to be done.</description>
+    </item>
+    
+    <item>
+      <title>GSoC: The final phase</title>
+      <link>https://dimitraz.github.io/blog/post/week-xiii/</link>
+      <pubDate>Wed, 23 Aug 2017 13:16:04 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/week-xiii/</guid>
+      <description>Since the last Google Summer of Code post a few weeks ago in which I promised to post weekly, I&amp;rsquo;ve mainly worked on the kafka-cdi library, adding custom serializers/deserializers to automatically handle objects of any type T.
+Generic serializers and deserializers for Kafka I ran into every problem imaginable - null serializers, problems with the library and problems with abstract class serialization. Here is the list of what was done:</description>
+    </item>
+    
+    <item>
+      <title>GSoC: The second evaluation phase</title>
+      <link>https://dimitraz.github.io/blog/post/phase-ii/</link>
+      <pubDate>Fri, 28 Jul 2017 14:16:04 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/phase-ii/</guid>
+      <description>It&amp;rsquo;s week 9 of Google Summer of Code and we&amp;rsquo;ve officially reached the second evaluation phase, which means we only have about four weeks left until our project comes to an end!
+So far so good! The amount I&amp;rsquo;ve learnt so far and the amount I still have to learn is definitely exciting, and I&amp;rsquo;m very grateful to be able to work on this project. This last month has been heavily focused on research, a lot more so than I initally anticipated.</description>
+    </item>
+    
+    <item>
+      <title>Analysing the UnifiedPush Server</title>
+      <link>https://dimitraz.github.io/blog/post/ups-metrics/</link>
+      <pubDate>Tue, 25 Jul 2017 13:16:04 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/ups-metrics/</guid>
+      <description>Attempting to get familiarized with the UPS codebase and its under-the-hood intricacies is a pretty daunting task. A good step in the right direction, for me at least, was attempting to analyse the metrics and the overall quality of the codebase. Having a higher level overview of what is currently there and a vague idea of what can be improved upon is generally a good place to start.
+So with that objective in mind we were recommended two tools in particular to play around with, Structure101 and SonarQube.</description>
+    </item>
+    
+    <item>
+      <title>Docker for Mac networking</title>
+      <link>https://dimitraz.github.io/blog/post/docker-networking/</link>
+      <pubDate>Wed, 19 Jul 2017 13:16:04 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/docker-networking/</guid>
+      <description>When Google Summer of Code first began, one of our first tasks was describing the steps for the required Kafka-Zookeeper setup. The most straightforward and uncomplicated solution was running the UPS locally, while Zookeeper and the Kafka broker would run in two separate Docker containers.
+From the very beginning I ran into loads of issues. Producers and consumers could be started easily from within the containers and communicate between themselves at that level.</description>
+    </item>
+    
+    <item>
+      <title>GSoC: First evaluation phase</title>
+      <link>https://dimitraz.github.io/blog/post/welcome/</link>
+      <pubDate>Sat, 10 Jun 2017 14:16:04 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/welcome/</guid>
+      <description>It&amp;rsquo;s been four weeks since Google Summer of Code officially started. In these past four weeks I&amp;rsquo;ve worked alongside fellow gsocer Polina to integrate the first Kafka producers and consumers in the UnifiedPush Server code base. It has been a pretty good feeling and something I never really imagined I&amp;rsquo;d have the opportunity to work on, but I really couldn&amp;rsquo;t have asked for a better project to be involved in.</description>
+    </item>
+    
+    <item>
+      <title>Eight months at Red Hat Mobile</title>
+      <link>https://dimitraz.github.io/blog/post/internship/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/internship/</guid>
+      <description>The first three months I started my internship at Red Hat Mobile eight months ago with very little idea of what I was getting myself into. I thought I had a vague idea of what to expect, but I definitely didn’t think I would be working as part of a team on a real product, or on anything other than small bugs.
+I started with 3 other interns. We were all placed in a team that matched our skillsets and were each assigned a buddy to help us ‘settle in’.</description>
+    </item>
+    
+  </channel>
+</rss>
