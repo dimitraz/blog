@@ -80,15 +80,5 @@ From the very beginning I ran into loads of issues. Producers and consumers coul
       <description>It&amp;rsquo;s been four weeks since Google Summer of Code officially started. In these past four weeks I&amp;rsquo;ve worked alongside fellow gsocer Polina to integrate the first Kafka producers and consumers in the UnifiedPush Server code base. It has been a pretty good feeling and something I never really imagined I&amp;rsquo;d have the opportunity to work on, but I really couldn&amp;rsquo;t have asked for a better project to be involved in.</description>
     </item>
     
-    <item>
-      <title>Eight months at Red Hat Mobile</title>
-      <link>https://dimitraz.github.io/blog/post/internship/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://dimitraz.github.io/blog/post/internship/</guid>
-      <description>The first three months I started my internship at Red Hat Mobile eight months ago with very little idea of what I was getting myself into. I thought I had a vague idea of what to expect, but I definitely didn’t think I would be working as part of a team on a real product, or on anything other than small bugs.
-I started with 3 other interns. We were all placed in a team that matched our skillsets and were each assigned a buddy to help us ‘settle in’.</description>
-    </item>
-    
   </channel>
 </rss>
