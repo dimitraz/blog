@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="A student studying Applied Computing">
+<meta name="description" content="Life the universe and everything">
+<meta name="generator" content="Hugo 0.24.1" />
+<title>GSoC: Lessons from week 10</title>
+<link rel="shortcut icon" href="https://dimitraz.github.io/blog/images/favicon.ico">
+<link rel="stylesheet" href="https://dimitraz.github.io/blog/css/style.css">
+<link rel="stylesheet" href="https://dimitraz.github.io/blog/css/highlight.css">
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+
+
+<link href="https://dimitraz.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="dimitraz.github.io" />
+
+
+<meta property="og:title" content="GSoC: Lessons from week 10" />
+<meta property="og:description" content="Week 11 of Google Summer of Code" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dimitraz.github.io/blog/post/week-x/" />
+
+
+
+<meta property="article:published_time" content="2017-08-08T14:17:04&#43;01:00"/>
+<meta property="article:modified_time" content="2017-08-08T14:17:04&#43;01:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="GSoC: Lessons from week 10">
+<meta itemprop="description" content="Week 11 of Google Summer of Code">
+
+
+<meta itemprop="dateModified" content="2017-08-08T14:17:04&#43;01:00" />
+<meta itemprop="wordCount" content="590">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="GSoC: Lessons from week 10"/>
+<meta name="twitter:title" content="GSoC: Lessons from week 10"/>
+<meta name="twitter:description" content="Week 11 of Google Summer of Code"/>
+
+
+
+    </head>
+<body>
+    <nav class="main-nav">
+	
+		<a href='https://dimitraz.github.io/blog/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+
+	
+		<a class="cta" href="https://dimitraz.github.io/blog/index.xml">Subscribe</a>
+	
+</nav>
+
+    <section id="wrapper">
+        
+        
+<article class="post">
+    <header>
+        <h1>GSoC: Lessons from week 10</h1>
+        <h2 class="headline">
+        August 8, 2017
+        <br>
+        
+        </h2>
+    </header>
+    <section id="post-body">
+        
+
+<h3 id="how-to-make-custom-serializers-and-deserializers-for-kafka">How to make custom serializers and deserializers for Kafka</h3>
+
+<p>I&rsquo;ve mainly been working on the Kafka-CDI library, adding custom serializers/deserializers to give us the ability to produce/consumer whatever we want to/from our topics.</p>
+
+<p>Once I figured out how to get the job done in my own little projects (~post to follow~), I fell into the trap of thinking that it was going to be a really quick fix getting the same going for the UPS. Yet here I am, almost two weeks later. While I&rsquo;ve managed to run into almost every problem imaginable, it&rsquo;s definitely been one of the most enjoyable things I&rsquo;ve worked on so far.</p>
+
+<p>On my first attempt, the serializers and deserializers would always return a null type, therefore throwing <code>NullPointerExceptions</code> despite the fact that I had explicitly passed in the object type myself.
+I eventually resorted to digging in to the actual upstream <a href="https://github.com/apache/kafka/tree/f87d58b796977fdaefb089d17cb30b2071cd4485/clients/src/main/java/org/apache/kafka/clients">source code</a> where I found I had been using the wrong constructors. It turns out that if you pass the serializers in manually, Kafka will attempt to construct them itself using the default constructor (no typing), which is quite blatantly obvious when you eventually get some distance from the problem.</p>
+
+<p>(I also stumbled upon (and lost sleep over) type erasure and reflection for the first time, which was something I hadn&rsquo;t even <em>heard</em> of in my two years so far at university).</p>
+
+<p>After that was sorted out, the next issue was related to the Consumer, which was only consuming records of type <code>String, String</code>. We made a Jira and Matthias <a href="https://github.com/matzew/kafka-cdi/pull/16">refactored</a> the library&rsquo;s <code>DelegationKafkaConsumer</code> to support custom Consumers, which allowed me to <a href="https://github.com/matzew/kafka-cdi/pull/17#pullrequestreview-55203529">complete the work</a> (for now) on the custom Ser/Des.</p>
+
+<p>There are still a few more issues. Polina has <a href="https://github.com/polinankoleva/aerogear-unifiedpush-server/commit/7c754932bed91afcdf72ed72c8072535ff07800a">made a PR</a> for a <a href="https://issues.jboss.org/browse/AGPUSH-2159">push notification producer</a> that sends the <code>pushApplication</code> and <code>message</code> to a topic for processing by the <code>NotificationRouter</code>. It won&rsquo;t work out of the box as the <code>PushApplication</code> class contains a list of type <code>Variant</code>, which is an abstract class (for obvious reasons, we can&rsquo;t serialise abstract classes).
+We also can&rsquo;t afford for topics to receive objects of all different types, or things might just implode. I assume this will have to be addressed with security at a later stage.</p>
+
+<h3 id="unit-testing">Unit testing</h3>
+
+<p>During my trials and tribulations with the custom ser/des, <a href="http://marcotroisi.com">my brother in law</a> pointed out the fact that I wouldn&rsquo;t need to be debugging so much if the tests I wrote were up to scratch. I haven’t been writing many (or any) tests up till now so that made an impression. I hear a lot about TDD in school but in my own personal projects I usually slap a few tests together at the end of the project with some edge cases, convince myself of a job well done and call it a day. After reading more about it in the past few weeks, I’m definitely more aware of the importance of testing, but <em>true</em> TDD is still something I’m not completely comfortable with yet. I’m going to try write some better tests for the work I’ve done so far, and I’m hoping to look at Test Driven Development in depth in my own projects once I’m back at university.</p>
+
+<h3 id="poc-links">POC links</h3>
+
+<p>I&rsquo;ll be carrying on with the serialisation work for the next few weeks, and hopefully I&rsquo;ll be back with another summary post after that. In the meantime, links to my small proof of concepts mentioned above can be found here:</p>
+
+<ul>
+<li><a href="https://github.com/dimitraz/kafka-streams-playground">Kafka Streams playground with custom serdes</a></li>
+<li><a href="https://github.com/dimitraz/kafka-poc">Kafka producers/consumers with custom serdes</a></li>
+<li><a href="https://github.com/dimitraz/kafka-cdi-resteasy">Kafka CDI example usage</a></li>
+</ul>
+
+    </section>
+</article>
+
+<footer id="post-meta" class="clearfix">
+    
+    <img class="avatar" src="https://dimitraz.github.io/blog/images/avatar.png">
+    <div>
+        <span class="dark">A student studying Applied Computing</span>
+        <span></span>
+    </div>
+    
+    <section id="sharing">
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fdimitraz.github.io%2fblog%2fpost%2fweek-x%2f - GSoC%3a%20Lessons%20from%20week%2010 "><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+    </section>
+</footer>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dimitraz';
+    var disqus_identifier = 'https:\/\/dimitraz.github.io\/blog\/post\/week-x\/';
+    var disqus_title = 'GSoC: Lessons from week 10';
+    var disqus_url = 'https:\/\/dimitraz.github.io\/blog\/post\/week-x\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+
+    
+    
+    
+        <li>
+            <a href="/blog/post/outreach/">Approaching outreach<aside class="dates">Apr 6 2018</aside></a>
+        </li>
+    
+        <li>
+            <a href="/blog/post/gsoc-final-phase/">Google Summer of Code 2017<aside class="dates">Aug 27 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/blog/post/week-xiii/">GSoC: The final phase<aside class="dates">Aug 23 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/blog/post/phase-ii/">GSoC: The second evaluation phase<aside class="dates">Jul 28 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/blog/post/ups-metrics/">Analysing the UnifiedPush Server<aside class="dates">Jul 25 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/blog/post/docker-networking/">Docker for Mac networking<aside class="dates">Jul 19 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/blog/post/welcome/">GSoC: First evaluation phase<aside class="dates">Jun 10 2017</aside></a>
+        </li>
+    
+</ul>
+
+
+
+        <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.github.com/dimitraz">
+        <i class="fa fa-github"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2018 A student studying Applied Computing
+    
+    </p>
+</footer>
+
+    </section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://dimitraz.github.io/blog/js/main.js"></script>
+<script src="https://dimitraz.github.io/blog/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-102682982-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>

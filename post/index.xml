@@ -42,6 +42,16 @@ Generic serializers and deserializers for Kafka I ran into every problem imagina
     </item>
     
     <item>
+      <title>GSoC: Lessons from week 10</title>
+      <link>https://dimitraz.github.io/blog/post/week-x/</link>
+      <pubDate>Tue, 08 Aug 2017 14:17:04 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/week-x/</guid>
+      <description>How to make custom serializers and deserializers for Kafka I&amp;rsquo;ve mainly been working on the Kafka-CDI library, adding custom serializers/deserializers to give us the ability to produce/consumer whatever we want to/from our topics.
+Once I figured out how to get the job done in my own little projects (~post to follow~), I fell into the trap of thinking that it was going to be a really quick fix getting the same going for the UPS.</description>
+    </item>
+    
+    <item>
       <title>GSoC: The second evaluation phase</title>
       <link>https://dimitraz.github.io/blog/post/phase-ii/</link>
       <pubDate>Fri, 28 Jul 2017 14:16:04 +0100</pubDate>
