@@ -2,7 +2,6 @@
 date = "2018-08-22T10:48:33+01:00"
 description = "A summary of my internship at Red Hat"
 title = "Eight months at Red Hat Mobile"
-draft = true
 +++
 
 
@@ -31,10 +30,10 @@ An opportunity came up to take part in Junior Achievement outreach at a local Hi
 The interns were also asked to do an interim brown bag lunch presentation on our experience up to now. I really enjoyed doing this because it forced me to sit down and take stock of what I had done, which was encouraging because it turned out to be a lot more than I thought.  I also made my first demo video (less scary than I anticipated!) and got my Professional Scrum Master I certificate (thank you to my fellow interns for forcing me).
 
 ## The last three months
-The final part of my internship was focussed on Kubernetes and the Operator SDK. I had no idea what the Operator SDK was, but there was talk of operators possibly replacing APBs, and the Operator Lifecycle Manager (OLM) replacing the Service Catalog. Our next few sprints were focussed on spikes for possible Operator use cases. 
+The final part of my internship was focussed on Kubernetes and the Operator SDK. I had no idea what the Operator SDK was, but there was talk of Operators and the Operator Lifecycle Manager (OLM) becoming more prominent. Our next few sprints were focussed on spikes for possible Operator use cases. 
 I worked with another team member on an operator for our Mobile CI/CD APB, which would handle syncing any SDK packages necessary for building the user’s mobile apps. I also got a chance to look at our ‘Managed Services’ Broker and started some work on our new Keycloak Operator alongside some of my other team mates. 
 
-By the last few weeks of my internship, Red Hat Mobile announced their interest in branching out to a wider ‘Cloud Services effort’. Mobile Core was merged into the new ‘Integreatly’ team, which would focus on Operators and ensuring seamless integration between all Cloud Services on Openshift. In the last few weeks I’ve been able to work with one of our newer team members on finishing the Keycloak Operator work and so far next to the APBs it’s been some of the most interesting/enjoyable work I’ve done. I’ve loved using Golang and I think I’m starting to get used to pointers, but that could also just be a false sense of security. 
+By the last few weeks of my internship, Red Hat Mobile announced their interest in branching out to a wider ‘Cloud Services effort’. Mobile Core would shift focus to Operators and ensuring seamless integration between all Cloud Services on Openshift. In the last few weeks I’ve been able to work with one of our newer team members on finishing the Keycloak Operator work and so far next to the APBs it’s been some of the most interesting/enjoyable work I’ve done. I’ve loved using Golang and I think I’m starting to get used to pointers, but that could also just be a false sense of security. 
 
 ![Tramore](https://lh5.googleusercontent.com/S3v9ihqHZmdiI7yuJcuMRysWD3RSFgUE_IfVgagIoQcDphgbC9hui_POpL8FObAHCcCmX7HIaMOLczoaEzIm-jUC-AmvLGB85SybYoFVYmo9l6ArabySUr5nHqgnoLRyOsK3WWw5)
 
