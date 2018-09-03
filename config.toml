@@ -4,6 +4,9 @@ languageCode = "en-us"
 title = "dimitraz.github.io"
 theme = "hugo-cactus-theme"
 
+relativeURLs=true
+canonifyURLs=true
+
 disqusShortname = "dimitraz"
 googleAnalytics = "UA-102682982-1"
 

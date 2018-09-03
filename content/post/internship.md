@@ -20,7 +20,7 @@ The snow came in march and being completely unprepared we were snowed in for a w
 
 To top off everything that was going on, 2018 took the best possible turn when my first ever nephew, Arrigo Marco Troisi, was born. He is now six months old which seems surreal and  he definitely takes the award for cutest nephew in the world!
 
-![Arrigo](https://lh5.googleusercontent.com/YC6tJlyI9dtIX8zh5akLu4WqKk0FoNDMikOCNlUEB_kCxCAvyg-ptq8LG2BHRNoBwYd881Opdw6hNXabDtCAlkcHcR1cACRuEMBKWd-UqHrm4aTRsziKt2oIUVk8r0AK7ZdCv8dK)
+![Arrigo](./images/arrigo.jpg)
 
 ## The next three months
 By the middle of my internship I had taken part in my first sprint planning and my first sprint retro and had pair programmed with almost everyone on the team. I had also done some work on the Android Studio plugin in Java, the Openshift Console in Angular & Javascript and my mind was completely blown by Ansible Playbook Bundles (APBs) and the Ansible Service Broker. I couldn’t wrap my head around how clever they were (still can’t) and how much translation was being done from the playbook to the broker to the console. I loved working on our APBs and tried to keep my focus on those for the most part, dodging Angular and demo videos as much as possible in between.
@@ -30,12 +30,12 @@ An opportunity came up to take part in Junior Achievement outreach at a local Hi
 The interns were also asked to do an interim brown bag lunch presentation on our experience up to now. I really enjoyed doing this because it forced me to sit down and take stock of what I had done, which was encouraging because it turned out to be a lot more than I thought.  I also made my first demo video (less scary than I anticipated!) and got my Professional Scrum Master I certificate (thank you to my fellow interns for forcing me).
 
 ## The last three months
-The final part of my internship was focussed on Kubernetes and the Operator SDK. I had no idea what the Operator SDK was, but there was talk of Operators and the Operator Lifecycle Manager (OLM) becoming more prominent. Our next few sprints were focussed on spikes for possible Operator use cases. 
+The final part of my internship was focussed on Kubernetes and the Operator SDK. Although the Operator framework had been around for a while, the Operator SDK was brand new and gaining a lot of traction at the time. I had no idea what it was but our next few sprints were focussed on spikes for potential use cases.
 I worked with another team member on an operator for our Mobile CI/CD APB, which would handle syncing any SDK packages necessary for building the user’s mobile apps. I also got a chance to look at our ‘Managed Services’ Broker and started some work on our new Keycloak Operator alongside some of my other team mates. 
 
-By the last few weeks of my internship, Red Hat Mobile announced their interest in branching out to a wider ‘Cloud Services effort’. Mobile Core would shift focus to Operators and ensuring seamless integration between all Cloud Services on Openshift. In the last few weeks I’ve been able to work with one of our newer team members on finishing the Keycloak Operator work and so far next to the APBs it’s been some of the most interesting/enjoyable work I’ve done. I’ve loved using Golang and I think I’m starting to get used to pointers, but that could also just be a false sense of security. 
+ In the last few weeks I’ve been able to work with one of our newer team members on finishing the Keycloak Operator work and so far next to the APBs it’s been some of the most interesting/enjoyable work I’ve done. I’ve loved using Golang and I think I’m starting to get used to pointers, but that could also just be a false sense of security. 
 
-![Tramore](https://lh5.googleusercontent.com/S3v9ihqHZmdiI7yuJcuMRysWD3RSFgUE_IfVgagIoQcDphgbC9hui_POpL8FObAHCcCmX7HIaMOLczoaEzIm-jUC-AmvLGB85SybYoFVYmo9l6ArabySUr5nHqgnoLRyOsK3WWw5)
+![Tramore](./images/tramore.JPG)
 
 Other than that, I’ve never been described as a social butterfly but to my surprise I’ve really enjoyed getting involved in some of the social activities in the office.
 After the unfortunate end to Mick’s cinema club within my first week (their viewing of ‘Raw’ caused PTSD amongst attendees of the club), our office manager and the Social Club took over with Marvel movie cinema outings, games nights, Easter egg hunts, Summer days out, World Cup viewings, Friday pay day drinks, and more. We also discovered Seagull Bakery early on and managed to find any excuse to go during lunch break. We’ve had lunch breaks in Tramore, lunch breaks on the benches in the longest summer ever, shortly lived Starbucks runs, outings to Dunmore and countless games of pool, although I’ve been told not to bank on it as a career if the whole Computer Science thing doesn’t work out. Thanks to the other interns I also got to experience my first carvery, which was a HUGE culture shock. Definitely a very eventful eight months! 
@@ -52,7 +52,7 @@ Here are a few other lessons I’ve learnt:
 - Pushing myself out of my comfort zone allowed me to discover things I didn’t really think I would enjoy. Getting involved in the outreach was one of those things and has turned out to be one of my high points during the internship. Teaching other students meant I had to be confident in what I knew myself and I grew a lot from the experience. 
 
 
-![WIT](https://lh5.googleusercontent.com/u4H94MBbrSi7ll5n8J-kYCJ8m_iJMp3ly3qOjMXTcmxXFUZxMZbD-jHaNM3SUvuVE1x8-qkpSn9kxOj260T7E3_bgoHjBAYorGVNb8WnNvAOady5tLvnCTNipBvPKuvT-rNglhv1)
+![WIT](./images/wit.JPG)
 
 
 Thank you to my manager, my buddy and the entire Red Hat Waterford office for welcoming all of the interns and making it a great place to be a part of!
