@@ -20,7 +20,7 @@ The snow came in march and being completely unprepared we were snowed in for a w
 
 To top off everything that was going on, 2018 took the best possible turn when my first ever nephew, Arrigo Marco Troisi, was born. He is now six months old which seems surreal and  he definitely takes the award for cutest nephew in the world!
 
-![Arrigo](./images/arrigo.jpg)
+![Arrigo](/static/img/internship/arrigo.jpg)
 
 ## The next three months
 By the middle of my internship I had taken part in my first sprint planning and my first sprint retro and had pair programmed with almost everyone on the team. I had also done some work on the Android Studio plugin in Java, the Openshift Console in Angular & Javascript and my mind was completely blown by Ansible Playbook Bundles (APBs) and the Ansible Service Broker. I couldn’t wrap my head around how clever they were (still can’t) and how much translation was being done from the playbook to the broker to the console. I loved working on our APBs and tried to keep my focus on those for the most part, dodging Angular and demo videos as much as possible in between.
@@ -35,7 +35,7 @@ I worked with another team member on an operator for our Mobile CI/CD APB, which
 
  In the last few weeks I’ve been able to work with one of our newer team members on finishing the Keycloak Operator work and so far next to the APBs it’s been some of the most interesting/enjoyable work I’ve done. I’ve loved using Golang and I think I’m starting to get used to pointers, but that could also just be a false sense of security. 
 
-![Tramore](./images/tramore.JPG)
+![Tramore](/static/img/internship/tramore.JPG)
 
 Other than that, I’ve never been described as a social butterfly but to my surprise I’ve really enjoyed getting involved in some of the social activities in the office.
 After the unfortunate end to Mick’s cinema club within my first week (their viewing of ‘Raw’ caused PTSD amongst attendees of the club), our office manager and the Social Club took over with Marvel movie cinema outings, games nights, Easter egg hunts, Summer days out, World Cup viewings, Friday pay day drinks, and more. We also discovered Seagull Bakery early on and managed to find any excuse to go during lunch break. We’ve had lunch breaks in Tramore, lunch breaks on the benches in the longest summer ever, shortly lived Starbucks runs, outings to Dunmore and countless games of pool, although I’ve been told not to bank on it as a career if the whole Computer Science thing doesn’t work out. Thanks to the other interns I also got to experience my first carvery, which was a HUGE culture shock. Definitely a very eventful eight months! 
@@ -52,7 +52,7 @@ Here are a few other lessons I’ve learnt:
 - Pushing myself out of my comfort zone allowed me to discover things I didn’t really think I would enjoy. Getting involved in the outreach was one of those things and has turned out to be one of my high points during the internship. Teaching other students meant I had to be confident in what I knew myself and I grew a lot from the experience. 
 
 
-![WIT](./images/wit.JPG)
+![WIT](/static/img/internship/wit.JPG)
 
 
 Thank you to my manager, my buddy and the entire Red Hat Waterford office for welcoming all of the interns and making it a great place to be a part of!
