@@ -6,10 +6,20 @@
     <description>Recent content in Posts on dimitraz.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Aug 2018 10:48:33 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 03 Feb 2019 03:18:01 +0100</lastBuildDate>
     
 	<atom:link href="https://dimitraz.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Serverless on Kubernetes with Kubeless and Kafka</title>
+      <link>https://dimitraz.github.io/blog/post/kubless-kafka/</link>
+      <pubDate>Sun, 03 Feb 2019 03:18:01 +0100</pubDate>
+      
+      <guid>https://dimitraz.github.io/blog/post/kubless-kafka/</guid>
+      <description>In this blog post I want to show how I used Kubeless and Strimzi (Apache Kafka) to set up event-driven serverless functions on Kubernetes and Openshift.
+The technologies Kubeless is based on the idea of on premise serverless for Kubernetes, and uses built-in Kubernetes primitives to achieve this goal. Kubeless uses the operator framework and custom resource definitions (CRDs) to define objects like functions and triggers (more on this below).</description>
+    </item>
     
     <item>
       <title>Eight months at Red Hat Mobile</title>
